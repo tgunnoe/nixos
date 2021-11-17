@@ -11,11 +11,13 @@ channels: final: prev: {
     nixpkgs-fmt
     qutebrowser
     signal-desktop
-    starship
+    #starship
     deploy-rs
     ;
 
-
+  # steam = prev.steam.override {
+  #   nativeOnly = true;
+  # };
   haskellPackages = prev.haskellPackages.override
     (old: {
       overrides = prev.lib.composeExtensions (old.overrides or (_: _: { })) (hfinal: hprev:

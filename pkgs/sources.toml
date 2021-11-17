@@ -2,3 +2,11 @@
 [manix]
 src.git = "https://github.com/mlvzk/manix"
 fetch.github = "mlvzk/manix"
+
+[i3-swallow]
+src.git = "https://github.com/jamesofarrell/i3-swallow"
+fetch.github = "jamesofarrell/i3-swallow"
+
+[kickoff]
+src.git = "https://github.com/j0ru/kickoff"
+fetch.github = "j0ru/kickoff"

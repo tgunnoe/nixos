@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
   home-manager.sharedModules = [
     {
       home.sessionVariables = {
@@ -7,5 +7,6 @@
       xdg.configFile."nix/registry.json".text =
         config.environment.etc."nix/registry.json".text;
     }
+    pkgs.nur.repos.rycee.hmModules.emacs-init
   ];
 }

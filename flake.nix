@@ -1,5 +1,5 @@
 {
-  description = "A highly structured configuration database.";
+  description = "Dune universe";
 
   nixConfig.extra-experimental-features = "nix-command flakes ca-references";
   nixConfig.extra-substituters = "https://nrdxp.cachix.org https://nix-community.cachix.org";
@@ -7,7 +7,7 @@
 
   inputs =
     {
-      nixos.url = "github:nixos/nixpkgs/release-21.05";
+      nixos.url = "github:nixos/nixpkgs/nixos-unstable";
       latest.url = "github:nixos/nixpkgs/nixos-unstable";
 
       digga.url = "github:divnix/digga";
@@ -22,13 +22,14 @@
       home.url = "github:nix-community/home-manager/release-21.05";
       home.inputs.nixpkgs.follows = "nixos";
 
-      darwin.url = "github:LnL7/nix-darwin";
-      darwin.inputs.nixpkgs.follows = "latest";
+      emacs.url = "github:nix-community/emacs-overlay";
 
       deploy.follows = "digga/deploy";
 
       agenix.url = "github:ryantm/agenix";
       agenix.inputs.nixpkgs.follows = "latest";
+
+      nur.url = "github:nix-community/nur";
 
       nvfetcher.url = "github:berberman/nvfetcher";
       nvfetcher.inputs.nixpkgs.follows = "latest";
@@ -61,6 +62,7 @@
     , agenix
     , nvfetcher
     , deploy
+    , emacs
     , ...
     } @ inputs:
     digga.lib.mkFlake
@@ -73,10 +75,12 @@
           nixos = {
             imports = [ (digga.lib.importOverlays ./overlays) ];
             overlays = [
-              digga.overlays.patchedNix
+              #digga.overlays.patchedNix
               nur.overlay
               agenix.overlay
               nvfetcher.overlay
+              deploy.overlay
+              emacs.overlay
               ./pkgs/default.nix
             ];
           };
@@ -113,7 +117,7 @@
             ];
           };
 
-          imports = [ (digga.lib.importHosts ./hosts) ];
+          imports = [ (digga.lib.importHosts ./machines) ];
           hosts = {
             /* set host specific properties here */
             NixOS = { };
@@ -124,6 +128,15 @@
             };
             suites = with profiles; rec {
               base = [ core users.nixos users.root ];
+              workstation = [ core develop ssh virt users.tgunnoe users.root ];
+              shell = [ core develop ssh virt users.drkuser users.root ];
+              graphics = workstation ++ [ graphical ];
+              mobile = graphics ++ [ laptop ];
+              play = graphics ++ [
+                games
+                #misc.disable-mitigations
+              ];
+              goPlay = play ++ [ laptop ];
             };
           };
         };
@@ -135,10 +148,19 @@
             profiles = digga.lib.rakeLeaves ./users/profiles;
             suites = with profiles; rec {
               base = [ direnv git ];
+              develop = base ++ [ profiles.emacs profiles.zsh vim ];
+              noemacs = base ++ [ profiles.zsh vim ];
+              graphics = develop ++ [ kitty ];
             };
           };
           users = {
             nixos = { suites, ... }: { imports = suites.base; };
+            tgunnoe = { suites, ... }: {
+              imports = suites.graphics;
+            };
+            drkuser = { suites, ... }: {
+              imports = suites.noemacs;
+            };
           }; # digga.lib.importers.rakeLeaves ./users/hm;
         };
 

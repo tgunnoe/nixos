@@ -5,16 +5,18 @@ in
   imports = [ ../cachix ];
 
   nix.systemFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-
   environment = {
 
     systemPackages = with pkgs; [
+      appimage-run
       binutils
+      bottom
       coreutils
       curl
       direnv
       dnsutils
       dosfstools
+      encfs
       fd
       git
       bottom
@@ -23,23 +25,20 @@ in
       jq
       manix
       moreutils
+
       nix-index
       nmap
+      openssl
+      pwgen
       ripgrep
       skim
       tealdeer
-      usbutils
+      screen
+      telnet
       utillinux
       whois
     ];
-
-    shellInit = ''
-      export STARSHIP_CONFIG=${
-        pkgs.writeText "starship.toml"
-        (fileContents ./starship.toml)
-      }
-    '';
-
+    pathsToLink = [ "/share/zsh" ];
     shellAliases =
       let ifSudo = lib.mkIf config.security.sudo.enable;
       in
@@ -110,6 +109,16 @@ in
 
     };
   };
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+        #        xdg-desktop-portal-gtk
+      ];
+      gtkUsePortal = true;
+    };
+  };
 
   nix = {
 
@@ -135,9 +144,6 @@ in
   };
 
   programs.bash = {
-    promptInit = ''
-      eval "$(${pkgs.starship}/bin/starship init bash)"
-    '';
     interactiveShellInit = ''
       eval "$(${pkgs.direnv}/bin/direnv hook bash)"
     '';
@@ -150,5 +156,7 @@ in
   };
 
   services.earlyoom.enable = true;
+  services.pipewire.enable = true;
+  users.mutableUsers = false;
 
 }
