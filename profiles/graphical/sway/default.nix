@@ -63,7 +63,7 @@ in
         #wldash
 
         # TODO: more steps required to use this?
-        #xdg-desktop-portal-wlr # xdg-desktop-portal backend for wlroots
+        xdg-desktop-portal-wlr # xdg-desktop-portal backend for wlroots
         dmenu-wayland
         #fuzzel
         qt5.qtwayland

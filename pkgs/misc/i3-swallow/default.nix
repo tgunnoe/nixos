@@ -1,23 +1,18 @@
-{ stdenv, lib, python3, fetchFromGitHub, sources }:
+{ stdenv, lib, buildPythonPackage, i3ipc, fetchPypi, sources }:
 
-stdenv.mkDerivation rec {
+buildPythonPackage rec {
   pname = "i3-swallow";
+  version = "1.0.0";
+  #inherit (sources.i3-swallow) version src;
 
-  inherit (sources.i3-swallow) version src;
+  src = fetchPypi {
+    inherit pname version;
+    sha256 = "44e1c7a7acb1eeb8e403a1b6fa350b5ba56fe60878097cb55873ccfcf56976b8";
+  };
+  propagatedBuildInputs = [ i3ipc ];
 
-  propagatedBuildInputs = [ python3.pkgs.i3ipc ];
-
-  #  postBuild
-  installPhase = ''
-    mkdir -p $out/bin
-    cp swallow.py $out/bin/swallow
-  '';
-  buildPhase = ''
-
-  '';
-  pythonPath = with python3.pkgs; [ i3ipc ];
-  # Tests require access to a X session
   doCheck = false;
+  pythonImportsCheck = [ "i3_swallow" ];
 
   meta = with lib; {
     homepage = "https://github.com/jamesofarrell/i3-swallow";
