@@ -1,6 +1,6 @@
-{ stdenv, lib, buildPythonPackage, i3ipc, fetchPypi, sources }:
+{ stdenv, lib, buildPythonApplication, i3ipc, fetchPypi, sources }:
 
-buildPythonPackage rec {
+buildPythonApplication rec {
   pname = "i3-swallow";
   version = "1.0.0";
   #inherit (sources.i3-swallow) version src;

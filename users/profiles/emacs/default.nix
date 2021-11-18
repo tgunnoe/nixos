@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 {
   #imports = with pkgs; [ nur.repos.rycee.hmModules.emacs-init ];
   services.emacs = {
@@ -950,7 +951,25 @@
           enable = true;
           command = [ "ripgrep-regexp" ];
         };
+        erc-sasl = {
+          package = epkgs:
+            epkgs.trivialBuild {
+              pname = "erc-sasl.el";
+              src = pkgs.fetchurl {
+                url =
+                  "https://gitlab.com/psachin/erc-sasl/-/raw/0fa60fdf8c2c1cdbe048e5189e35e480fe931c20/erc-sasl.el";
+                sha256 = "sha256-E/kCGlxfrmNwJM8BJ/3DR8l1ypnv++3dAEV7nlCxS5w=";
+              };
+              preferLocalBuild = true;
+              allowSubstitutes = true;
+            };
 
+          enable = true;
+          after = [ "erc" ];
+          config = ''
+            (add-to-list 'erc-sasl-server-regexp-list "irc\\.libera\\.chat")
+          '';
+        };
         org = {
           enable = true;
           bind = {
