@@ -32,7 +32,12 @@ in
       };
     };
   };
-
+  # services.protonvpn = {
+  #   enable = true;
+  #   authentication.username = "john";
+  #   authentication.password = "galt";
+  #   server = "us-free-01.protonvpn.com";
+  # };
   home-manager.users.tgunnoe = { suites, lib, nur, ... }: {
     imports = suites.graphics;
     home = {

@@ -114,6 +114,7 @@
               home.nixosModules.home-manager
               agenix.nixosModules.age
               bud.nixosModules.bud
+              #nur.repos.emmanuelrosa.modules.protonvpn
             ];
           };
 
@@ -150,7 +151,7 @@
               base = [ direnv git ];
               develop = base ++ [ profiles.emacs profiles.zsh vim ];
               noemacs = base ++ [ profiles.zsh vim ];
-              graphics = develop ++ [ kitty ];
+              graphics = develop ++ [ kitty sway ];
             };
           };
           users = {

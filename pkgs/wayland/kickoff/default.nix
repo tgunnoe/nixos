@@ -1,10 +1,10 @@
 { lib, rustPlatform, sources }:
 
 rustPlatform.buildRustPackage rec {
+  inherit (sources.kickoff) pname version src;
 
-  inherit (sources.kickoff) version src;
-
-  cargoSha256 = lib.fakeSha256;
+  #cargoSha256 = lib.fakeSha256;
+  cargoHash = "sha256-OiAChKE6hwfUtAKlzZZEC/3jcLn2nb251lGJIKnVDvw=";
 
   #  nativeBuildInputs = [ pkg-config ];
 

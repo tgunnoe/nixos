@@ -20,7 +20,7 @@
     [{ device = "/dev/disk/by-uuid/e19f6a23-35e3-42fe-b071-acc1eda63975"; }];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
     loader = {
@@ -64,7 +64,33 @@
     keyMap = "dvorak";
     earlySetup = true;
   };
+  home-manager.users.tgunnoe.wayland.windowManager.sway.config = {
+    gaps = {
+      inner = 20;
+      outer = 5;
+    };
+    output = {
+      eDP-1 = {
+        bg = "${self}/artwork/background.jpg fill";
+        resolution = "2256x1504@60hz";
+        scale = "1.5";
+      };
+    };
+    input = {
+      "1:1:AT_Translated_Set_2_keyboard" = {
+        xkb_layout = "dvorak";
+        xkb_variant = ",nodeadkeys";
+        xkb_options = "ctrl:nocaps";
+      };
+      "2362:628:PIXA3854:00_093A:0274_Touchpad" = {
+        tap = "enabled";
+        middle_emulation = "enabled";
+        natural_scroll = "disabled";
+        dwt = "enabled";
 
+      };
+    };
+  };
   i18n.defaultLocale = "en_US.UTF-8";
 
   powerManagement = {

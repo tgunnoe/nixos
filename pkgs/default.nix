@@ -4,5 +4,5 @@ final: prev: {
   # then, call packages with `final.callPackage`
   i3-swallow = prev.python3Packages.callPackage ./misc/i3-swallow { };
 
-  #kickoff = prev.callPackage ./wayland/kickoff { };
+  kickoff = prev.callPackage ./wayland/kickoff { };
 }

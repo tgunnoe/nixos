@@ -2,7 +2,7 @@
 let inherit (builtins) readFile;
 in
 {
-  imports = [ ./sway ../develop ../network ./im ./bitcoin ];
+  imports = [ /*./sway*/ ../develop ../network ./im ./bitcoin ];
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;

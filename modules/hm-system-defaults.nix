@@ -8,5 +8,6 @@
         config.environment.etc."nix/registry.json".text;
     }
     pkgs.nur.repos.rycee.hmModules.emacs-init
+#    pkgs.nur.repos.emmanuelrosa.protonvpn
   ];
 }
