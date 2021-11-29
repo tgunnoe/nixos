@@ -4,10 +4,10 @@
 
   home.packages = with pkgs; [
         swayidle # idle handling
-        swaylock # screen locking
+        #swaylock # screen locking
         grim # screen image capture
+        sway-contrib.grimshot
         slurp # screen are selection tool
-        #mako # notification daemon
         kanshi # dynamic display configuration helper
         imv # image viewer
         wf-recorder # screen recorder
@@ -29,8 +29,7 @@
         gebaar-libinput # libinput gestures utility
         #glpaper          # GL shaders as wallpaper
         #oguri            # animated background utility
-        #rootbar
-        swaylock-fancy
+        swaylock-effects
         waypipe # network transparency for Wayland
         wdisplays
         wlr-randr
@@ -83,6 +82,25 @@
               app_id = ".*";
             };
           }
+          {
+            command = "move container to scratchpad";
+            criteria = {
+               title = "dropdown";
+            };
+          }
+          {
+            command = "move absolute position 0 30";
+            criteria = {
+               title = "dropdown";
+            };
+          }
+          {
+            command = "resize set 110 ppt 40 ppt";
+            criteria = {
+               title = "dropdown";
+            };
+          }
+
         ];
       };
       fonts = {
@@ -157,7 +175,7 @@
         "${modifier}+Shift+6" = "move container to workspace 6; workspace 6";
         "${modifier}+Shift+7" = "move container to workspace 7; workspace 7";
         "${modifier}+Shift+8" = "move container to workspace 8; workspace 8";
-        "${modifier}+Return" = "exec ${pkgs.kitty}/bin/kitty";
+        "${modifier}+Return" = "exec ${config.wayland.windowManager.sway.config.terminal}";
         "${modifier}+Shift+apostrophe" = "mark quit; exec ${./fadeout.sh}";
         "${modifier}+apostrophe" = "split toggle";
         "${modifier}+h" = "split h;exec notify-send 'tile horizontally'";
@@ -181,6 +199,8 @@
         "${modifier}+n" = "focus down";
         "${modifier}+p" = "focus up";
         "${modifier}+f" = "focus right";
+        "${modifier}+comma" = "layout tabbed";
+        "${modifier}+y" = "layout toggle split";
 
         "${modifier}+e" = "exec ${config.wayland.windowManager.sway.config.terminal} emacsclient -nw -e '(switch-to-buffer nil)'";
         "${modifier}+Ctrl+m" = "exec pavucontrol";
@@ -234,6 +254,14 @@
         { command = "${pkgs.autotiling}/bin/autotiling"; }
         { command = "${pkgs.flashfocus}/bin/flashfocus"; }
         { command = "${pkgs.mako}/bin/mako"; always = true; }
+        { command = "${config.wayland.windowManager.sway.config.terminal} --title='dropdown'"; }
+        { command = ''
+          ${pkgs.swayidle}/bin/swayidle -w \
+            timeout 300 "${pkgs.swaylock-effects}/bin/swaylock" \
+            timeout 600 'swaymsg "output * dpms off"' \
+            after-resume 'swaymsg "output * dpms on"' \
+            before-sleep "${pkgs.swaylock-effects}/bin/swaylock"
+        ''; }
       ];
     };
     extraSessionCommands = ''
