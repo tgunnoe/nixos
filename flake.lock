@@ -173,6 +173,27 @@
         "type": "github"
       }
     },
+    "extra-container": {
+      "inputs": {
+        "flake-utils": "flake-utils_3",
+        "nixpkgs": [
+          "nixos"
+        ]
+      },
+      "locked": {
+        "lastModified": 1634384804,
+        "narHash": "sha256-QEWKjO1SRgwupq+7eLuokRrFBIq3Dr4U578lUj4w31g=",
+        "owner": "erikarvstedt",
+        "repo": "extra-container",
+        "rev": "639d62a24932409962857d2134fc9fc3cc5b6b61",
+        "type": "github"
+      },
+      "original": {
+        "owner": "erikarvstedt",
+        "repo": "extra-container",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -232,6 +253,21 @@
         "owner": "numtide",
         "repo": "flake-utils",
         "rev": "f7e004a55b120c02ecb6219596820fcd32ca8772",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_3": {
+      "locked": {
+        "lastModified": 1631561581,
+        "narHash": "sha256-3VQMV5zvxaVLvqqUrNz3iJelLw30mIVSfZmAaauM3dA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "7e5bf3925f6fbdfaf50a2a7ca0be2879c4261d19",
         "type": "github"
       },
       "original": {
@@ -494,6 +530,7 @@
         ],
         "digga": "digga",
         "emacs": "emacs",
+        "extra-container": "extra-container",
         "flake-utils": [
           "digga",
           "flake-utils"

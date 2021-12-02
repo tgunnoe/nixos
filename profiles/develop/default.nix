@@ -17,6 +17,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    adoptopenjdk-icedtea-web
     deploy-rs.deploy-rs
     libbitcoin-explorer
     wf-recorder

@@ -13,7 +13,7 @@ in
   users.groups.media.members = [ "tgunnoe" ];
   users.users.tgunnoe = {
     uid = 1000;
-    passwordFile = "/run/secrets/tgunnoe";
+    passwordFile = "/run/agenix/tgunnoe";
     description = name;
     shell = pkgs.zsh;
     isNormalUser = true;
@@ -32,12 +32,7 @@ in
       };
     };
   };
-  # services.protonvpn = {
-  #   enable = true;
-  #   authentication.username = "john";
-  #   authentication.password = "galt";
-  #   server = "us-free-01.protonvpn.com";
-  # };
+
   home-manager.users.tgunnoe = { suites, lib, nur, ... }: {
     imports = suites.graphics;
     home = {
@@ -74,7 +69,7 @@ in
         matchBlocks = {
           "gnu.lv" = {
             host = "${config.networking.hostName}";
-            identityFile = "/run/secrets/salusa";
+            identityFile = "/run/agenix/salusa";
             extraOptions = { AddKeysToAgent = "yes"; };
           };
         };

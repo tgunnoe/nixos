@@ -22,6 +22,9 @@
       home.url = "github:nix-community/home-manager/release-21.05";
       home.inputs.nixpkgs.follows = "nixos";
 
+      extra-container.url = "github:erikarvstedt/extra-container";
+      extra-container.inputs.nixpkgs.follows = "nixos";
+
       emacs.url = "github:nix-community/emacs-overlay";
 
       deploy.follows = "digga/deploy";
@@ -57,6 +60,7 @@
     , bud
     , nixos
     , home
+    , extra-container
     , nixos-hardware
     , nur
     , agenix
@@ -112,9 +116,18 @@
               digga.nixosModules.bootstrapIso
               digga.nixosModules.nixConfig
               home.nixosModules.home-manager
+              extra-container.nixosModule
               agenix.nixosModules.age
               bud.nixosModules.bud
-              #nur.repos.emmanuelrosa.modules.protonvpn
+              #repos.emmanuelrosa.modules.protonvpn
+              ({ pkgs, ... }:
+                let
+                  nur-no-pkgs = import nur {
+                    nurpkgs = import nixos { system = "x86_64-linux"; };
+                  };
+                in {
+                  imports = [ nur-no-pkgs.repos.emmanuelrosa.modules.protonvpn ];
+                })
             ];
           };
 
