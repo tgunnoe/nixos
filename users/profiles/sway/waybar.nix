@@ -11,6 +11,7 @@
         output = [
           "eDP-1"
           "HDMI-A-1"
+          "DP-2"
         ];
         modules-left = [
           "custom/distro-icon"

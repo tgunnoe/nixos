@@ -1,4 +1,4 @@
-{ lib, pkgs, modulesPath, suites, ... }:
+{ lib, pkgs, modulesPath, self, suites, ... }:
 {
   ### root password is empty by default ###
   imports = [
@@ -63,6 +63,20 @@
       };
     };
     supportedFilesystems = [ "ntfs" ];
+  };
+  home-manager.users.tgunnoe.wayland.windowManager.sway.config = {
+    gaps = {
+      inner = 20;
+      outer = 5;
+    };
+    output = {
+      DP-2 = {
+        bg = "${self}/artwork/background.jpg fill";
+        resolution = "3440x1440@144hz";
+        scale = "1";
+      };
+    };
+
   };
 
   networking = {
