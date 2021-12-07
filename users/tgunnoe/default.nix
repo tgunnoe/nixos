@@ -32,7 +32,23 @@ in
       };
     };
   };
-
+  # services.openvpn.servers = let
+  #   config = pkgs.substituteAll {
+  #     src = ./private/linode/linode.ovpn;
+  #     name = "config";
+  #     key = ./private/linode/linode.key;
+  #     pkcs12 = ./private/linode/linode.p12;
+  #   };
+  # in
+  #   {
+  #     officeVPN  = {
+  #       config = '' ${builtins.readFile config} '';
+  #       authUserPass = {
+  #         username = "${builtins.readFile ./private/linode/user}";
+  #         password = "${builtins.readFile ./private/linode/pass}";
+  #       };
+  #     };
+  #   };
   home-manager.users.tgunnoe = { suites, lib, nur, ... }: {
     imports = suites.graphics;
     home = {

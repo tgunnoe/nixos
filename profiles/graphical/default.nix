@@ -67,7 +67,7 @@ in
 
       nyxt
       pcmanfm
-
+      mupdf
       # video pkgs
       gnome3.adwaita-icon-theme
       vlc
