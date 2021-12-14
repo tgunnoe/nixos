@@ -40,6 +40,7 @@
     neofetch
     nix-serve
     nixpkgs-review
+    nodejs
     pandoc
     pkgconfig
     rubber

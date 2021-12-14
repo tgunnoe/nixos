@@ -64,7 +64,7 @@ in
       inkscape
       chromium
       nomacs
-
+      #torbrowser
       nyxt
       pcmanfm
       mupdf
