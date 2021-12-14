@@ -101,13 +101,14 @@
   services.logind.extraConfig = "HandlePowerKey=ignore";
   services.thermald.enable = true;
   services.hdapsd.enable = true;
+  services.fstrim.enable = true;
   networking = {
     hostId = "2448721d";
     hostName = "rakis";
     firewall.allowedTCPPorts = [ 8000 30000 ];
     firewall.allowedUDPPorts = [ 30000 ];
     useDHCP = false;
-    interfaces.wlp170s0.useDHCP = true;
+#    interfaces.wlp170s0.useDHCP = true;
     networkmanager.enable = true;
   };
 
