@@ -125,7 +125,8 @@
                   nur-no-pkgs = import nur {
                     nurpkgs = import nixos { system = "x86_64-linux"; };
                   };
-                in {
+                in
+                {
                   imports = [ nur-no-pkgs.repos.emmanuelrosa.modules.protonvpn ];
                 })
             ];
@@ -162,8 +163,8 @@
             profiles = digga.lib.rakeLeaves ./users/profiles;
             suites = with profiles; rec {
               base = [ direnv git ];
-              develop = base ++ [ profiles.emacs profiles.zsh vim ];
-              noemacs = base ++ [ profiles.zsh vim ];
+              develop = base ++ [ profiles.emacs profiles.zsh ];
+              noemacs = base ++ [ profiles.zsh ];
               graphics = develop ++ [ kitty sway ];
             };
           };

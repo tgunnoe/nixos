@@ -100,13 +100,9 @@ in
 
   fonts = {
     fonts = with pkgs; [ powerline-fonts dejavu_fonts ];
-
     fontconfig.defaultFonts = {
-
       monospace = [ "DejaVu Sans Mono for Powerline" ];
-
       sansSerif = [ "DejaVu Sans" ];
-
     };
   };
   xdg = {
@@ -114,12 +110,11 @@ in
       enable = true;
       extraPortals = with pkgs; [
         xdg-desktop-portal-wlr
-        #        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gtk
       ];
       gtkUsePortal = true;
     };
   };
-
   nix = {
 
     autoOptimiseStore = true;

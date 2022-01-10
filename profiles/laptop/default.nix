@@ -8,7 +8,8 @@
     usbutils
     fwupd
   ];
-  networking.wireless.iwd.enable = true;
+  #networking.wireless.iwd.enable = true;
+  #networking.wireless.enable = true;
   hardware.bluetooth.enable = true;
 
   # to enable brightness keys 'keys' value may need updating per device
