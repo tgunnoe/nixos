@@ -21,8 +21,10 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
+    kernelModules = [ "kvm-intel" "v4l2loopback" "g_ether" ];
+    extraModulePackages = [
+      pkgs.linuxKernel.packages.linux_5_15.v4l2loopback
+    ];
     loader = {
       efi = {
         canTouchEfiVariables = true;
@@ -78,8 +80,7 @@
     };
     input = {
       "1:1:AT_Translated_Set_2_keyboard" = {
-        xkb_layout = "dvorak";
-        xkb_variant = ",nodeadkeys";
+        xkb_layout = "dvorak,us";
         xkb_options = "ctrl:nocaps";
       };
       "2362:628:PIXA3854:00_093A:0274_Touchpad" = {

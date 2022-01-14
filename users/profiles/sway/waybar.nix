@@ -170,7 +170,9 @@
         layer = "top";
         position = "bottom";
         modules-left = [ "custom/quit" ];
+        modules-center = [ "tray" ];
         modules-right = [
+          "sway/language"
           "custom/ddrS"
           "cpu"
           "temperature"
@@ -202,7 +204,13 @@
             # format-full = "";
             format-icons = [ "" "" "" "" "" ];
           };
-
+          tray = {
+            icon-size = 21;
+            spacing = 10;
+          };
+          "sway/language" = {
+            format = "{variant}";
+          };
           "custom/ddrS" = {
             format = "";
           };

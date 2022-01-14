@@ -44,8 +44,7 @@
     pandoc
     pkgconfig
     rubber
-    taskwarrior
-    taskwarrior-tui
+    sqlite
     tig
     tokei
     viu

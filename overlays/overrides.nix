@@ -29,4 +29,8 @@ channels: final: prev: {
             haskell-language-server;
         });
     });
+    factorio = prev.factorio.override {
+        username = "veleiro";
+        token = "88a2d1512d4e65c2fb1e53a2997ba9";
+      };
 }

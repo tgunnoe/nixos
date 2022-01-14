@@ -3,50 +3,40 @@
   imports = [ ./waybar.nix ];
 
   home.packages = with pkgs; [
-    swayidle # idle handling
+    swayidle
     #swaylock # screen locking
-    grim # screen image capture
+    grim
     sway-contrib.grimshot
-    slurp # screen are selection tool
-    kanshi # dynamic display configuration helper
-    imv # image viewer
-    wf-recorder # screen recorder
-    wl-clipboard # wayland vers of xclip
+    slurp
+    kanshi
+    imv
+    wf-recorder
+    wl-clipboard
 
-    xdg_utils # for xdg_open
-    xwayland # for X apps
-    libnl # waybar wifi
-    libpulseaudio # waybar audio
+    xdg_utils
+    xwayland
+    libnl
+    libpulseaudio
 
     autotiling
     #flashfocus
     i3-swallow
+    swaykbdd
 
-    swaybg # required by sway for controlling desktop wallpaper
+    swaybg
     clipman
-    #i3status-rust # simpler bar written in Rust
     drm_info
     gebaar-libinput # libinput gestures utility
-    #glpaper          # GL shaders as wallpaper
-    #oguri            # animated background utility
     swaylock-effects
-    waypipe # network transparency for Wayland
+    waypipe
     wdisplays
     wlr-randr
-    #wlay
     wofi
-    #wtype            # xdotool, but for wayland
-    #wlogout
-    #wldash
 
-    # TODO: more steps required to use this?
-    xdg-desktop-portal-wlr # xdg-desktop-portal backend for wlroots
+    xdg-desktop-portal-wlr
     dmenu-wayland
-    #fuzzel
     qt5.qtwayland
     volnoti
-
-    #(waybar.override { pulseSupport = pulseaudio.enable; })
 
   ];
   wayland.windowManager.sway = {
@@ -256,6 +246,7 @@
       startup = [
         { command = "systemctl --user restart waybar"; always = true; }
         { command = "${pkgs.autotiling}/bin/autotiling"; }
+        { command = "${pkgs.swaykbdd}/bin/swaykbdd"; }
         #{ command = "${pkgs.flashfocus}/bin/flashfocus"; }
         { command = "${pkgs.mako}/bin/mako"; always = true; }
         { command = "${config.wayland.windowManager.sway.config.terminal} --title='dropdown'"; }

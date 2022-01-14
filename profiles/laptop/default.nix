@@ -4,6 +4,8 @@
     libinput
     lm_sensors
     wirelesstools
+    libcamera
+    v4l-utils
     pciutils
     usbutils
     fwupd
