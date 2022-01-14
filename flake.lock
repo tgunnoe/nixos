@@ -346,6 +346,23 @@
         "type": "github"
       }
     },
+    "mobile-nixos": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1642908484,
+        "narHash": "sha256-DbLilulFRmyRmXoLAsLWDsyGniH12ZZagLCvg0nVabY=",
+        "owner": "zhaofengli",
+        "repo": "mobile-nixos",
+        "rev": "5ade466545395813092221bc7e0a3755c6a41c89",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zhaofengli",
+        "ref": "pp-keyboard",
+        "repo": "mobile-nixos",
+        "type": "github"
+      }
+    },
     "naersk": {
       "inputs": {
         "nixpkgs": [
@@ -583,6 +600,7 @@
         ],
         "home": "home",
         "latest": "latest_2",
+        "mobile-nixos": "mobile-nixos",
         "naersk": "naersk",
         "nixlib": [
           "digga",

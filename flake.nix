@@ -32,6 +32,9 @@
       agenix.url = "github:ryantm/agenix";
       agenix.inputs.nixpkgs.follows = "latest";
 
+      mobile-nixos.url = "github:zhaofengli/mobile-nixos/pp-keyboard";
+      mobile-nixos.flake = false;
+
       nur.url = "github:nix-community/nur";
 
       nvfetcher.url = "github:berberman/nvfetcher";
@@ -136,15 +139,21 @@
           hosts = {
             /* set host specific properties here */
             NixOS = { };
+            ithaca = {
+              system = "aarch64-linux";
+              modules = [
+                #mobile-nixos.nixosModules.pine64-pinephone
+              ];
+            };
           };
           importables = rec {
             profiles = digga.lib.rakeLeaves ./profiles // {
               users = digga.lib.rakeLeaves ./users;
             };
             suites = with profiles; rec {
-              base = [ core users.nixos users.root ];
-              workstation = [ core develop ssh virt users.tgunnoe users.root ];
-              shell = [ core develop ssh virt users.drkuser users.root ];
+              base = [ core users.tgunnoe users.root ];
+              workstation = [ develop ssh virt base ];
+              shell = [ core develop ssh virt users.root ];
               graphics = workstation ++ [ graphical ];
               mobile = graphics ++ [ laptop ];
               play = graphics ++ [
@@ -172,9 +181,6 @@
             nixos = { suites, ... }: { imports = suites.base; };
             tgunnoe = { suites, ... }: {
               imports = suites.graphics;
-            };
-            drkuser = { suites, ... }: {
-              imports = suites.noemacs;
             };
           }; # digga.lib.importers.rakeLeaves ./users/hm;
         };
