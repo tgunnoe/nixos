@@ -8,7 +8,6 @@ in
   environment = {
 
     systemPackages = with pkgs; [
-      appimage-run
       binutils
       bottom
       coreutils
