@@ -387,7 +387,12 @@
           # Avoid spamming reload requests of TAGS files.
           config = "(setq tags-revert-without-query t)";
         };
-
+        go-mode = {
+          enable = true;
+          mode = [
+            ''("\\.go\\'" . go-mode)''
+          ];
+        };
         ggtags = {
           enable = true;
           defer = true;
@@ -1049,16 +1054,14 @@
 
             ;; FIXME, setup rah-org replacement
             (setq org-tag-alist '((:startgroup . nil)
-                        ("@tgunnoe" . ?j)  
-                         
-                         ("@armor" . ?a)
+                        ("@tgunnoe" . ?j)
+                        ("@armor" . ?a)
                         (:endgroup . nil)
                         (:startgroup . nil)
                         ("!v0" . ?0) ("!v1" . ?1)
                         (:endgroup . nil)
                         ("bitcoin") ("emacs") ("linux") ("books") ("gaming")
                         ("programming") ("free software") ("open hardware")
-                        
                         ("research") ("study") ("review") ("code") ("design")
                         ("exercise") ("meet")))
 
@@ -1437,7 +1440,14 @@
             (add-to-list 'company-backends 'company-cabal)
           '';
         };
-
+        company-go = {
+          enable = true;
+          after = [ "company" ];
+          command = [ "company-go" ];
+          config = ''
+            (add-to-list 'company-backends 'company-go)
+          '';
+        };
         company-restclient = {
           enable = true;
           after = [ "company" "restclient" ];
@@ -1578,7 +1588,10 @@
           enable = true;
           mode = [ ''"\\.rs\\'"'' ];
         };
-
+        tide = {
+          enable = true;
+          mode = [ ''"\\.rs\\'"'' ];
+        };
         sendmail = {
           enable = false;
           mode = [
