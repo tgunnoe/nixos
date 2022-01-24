@@ -17,6 +17,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    appimage-run
     adoptopenjdk-icedtea-web
     deploy-rs.deploy-rs
     libbitcoin-explorer
@@ -31,16 +32,23 @@
     parted
     gcc
     git-crypt
+    git-filter-repo
     gnumake
     gnupg
+
     go
+    gopls
     gopass
+
     less
     ncdu
     neofetch
     nix-serve
     nixpkgs-review
+
     nodejs
+    yarn
+
     pandoc
     pkgconfig
     rubber

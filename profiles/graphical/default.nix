@@ -64,7 +64,7 @@ in
       inkscape
       chromium
       nomacs
-      #torbrowser
+      torbrowser
       nyxt
       pcmanfm
       mupdf
@@ -77,7 +77,8 @@ in
   };
   services.flatpak.enable = true;
   services.gnome.gnome-keyring.enable = true;
-
+  services.tor.enable = true;
+  services.tor.client.enable = true;
   services.greetd = {
     enable = true;
     settings = {
