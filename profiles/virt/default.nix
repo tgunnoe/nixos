@@ -13,10 +13,14 @@
     anbox.enable = false;
     containers.enable = true;
     waydroid.enable = true;
+    docker.enable = true;
   };
   networking.firewall.trustedInterfaces = [ "waydroid0" ];
   # you'll need to add your user to 'libvirtd' group to use virt-manager
-  environment.systemPackages = with pkgs; [ virt-manager ];
+  environment.systemPackages = with pkgs; [
+    docker-compose
+    virt-manager
+  ];
 
   #environment.shellAliases.docker = "podman";
 
