@@ -109,7 +109,7 @@
           xkb_layout = "dvorak";
           xkb_variant = ",nodeadkeys";
           xkb_options = "ctrl:nocaps";
-          middle_emulation = "disabled";
+          middle_emulation = "enabled";
           tap = "enabled";
           click_method = "none";
           drag_lock = "disabled";

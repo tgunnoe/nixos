@@ -20,6 +20,7 @@
     [{ device = "/dev/disk/by-uuid/e19f6a23-35e3-42fe-b071-acc1eda63975"; }];
 
   boot = {
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-intel" "v4l2loopback" "g_ether" ];
     extraModulePackages = [
@@ -77,6 +78,11 @@
         resolution = "2256x1504@60hz";
         scale = "1.5";
       };
+      DP-4 = {
+        bg = "${self}/artwork/background.jpg fill";
+        resolution = "3840x2160@60hz";
+        scale = "1.5";
+      };
     };
     input = {
       "1:1:AT_Translated_Set_2_keyboard" = {
@@ -109,7 +115,7 @@
     firewall.allowedTCPPorts = [ 8000 30000 ];
     firewall.allowedUDPPorts = [ 30000 ];
     useDHCP = false;
-#    interfaces.wlp170s0.useDHCP = true;
+    #    interfaces.wlp170s0.useDHCP = true;
     networkmanager.enable = true;
   };
 
