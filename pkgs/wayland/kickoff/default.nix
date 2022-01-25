@@ -1,4 +1,4 @@
-{ lib, rustPlatform, sources }:
+{ lib, pkgs, rustPlatform, sources }:
 
 rustPlatform.buildRustPackage rec {
   inherit (sources.kickoff) pname version src;
@@ -6,9 +6,9 @@ rustPlatform.buildRustPackage rec {
   #cargoSha256 = lib.fakeSha256;
   cargoHash = "sha256-OiAChKE6hwfUtAKlzZZEC/3jcLn2nb251lGJIKnVDvw=";
 
-  #  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [ pkgs.cmake pkgs.pkg-config ];
 
-  #  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security libiconv ];
+  buildInputs = [ pkgs.freetype pkgs.expat pkgs.wlroots ];
 
   #  checkType = "debug";
 
