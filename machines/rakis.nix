@@ -78,7 +78,7 @@
         resolution = "2256x1504@60hz";
         scale = "1.5";
       };
-      DP-4 = {
+      "Ancor Communications Inc ASUS MG28U 0x00001BF4" = {
         bg = "${self}/artwork/background.jpg fill";
         resolution = "3840x2160@60hz";
         scale = "1.5";
