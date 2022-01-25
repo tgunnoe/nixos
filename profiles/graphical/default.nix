@@ -61,6 +61,7 @@ in
       pavucontrol
       qt5.qtgraphicaleffects
       stdmanpages
+      gimp
       inkscape
       chromium
       nomacs

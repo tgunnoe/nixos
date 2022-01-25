@@ -25,6 +25,7 @@ in
       "libvirtd"
       "video"
       "taskd"
+      "docker"
     ];
     openssh = {
       authorizedKeys = {

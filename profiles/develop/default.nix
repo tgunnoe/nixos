@@ -48,6 +48,7 @@
 
     nodejs
     yarn
+    libusb1
 
     pandoc
     pkgconfig
