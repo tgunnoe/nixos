@@ -13,6 +13,7 @@ in
       coreutils
       curl
       direnv
+      dmidecode
       dnsutils
       dosfstools
       encfs
