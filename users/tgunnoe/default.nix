@@ -7,7 +7,6 @@ let
 
 in
 {
-  imports = [ ./private/protected.nix ];
   age.secrets.tgunnoe.file = "${self}/secrets/tgunnoe.age";
   age.secrets.salusa.file = "${self}/secrets/salusa.age";
   users.groups.media.members = [ "tgunnoe" ];
@@ -98,7 +97,11 @@ in
       duskTime = "18:35-20:15";
     };
   };
-
+  location = {
+    latitude = 38.0;
+    longitude = -80.0;
+  };
+  time.timeZone = "America/New_York";
   systemd.services.protonvpn-autoconnect = {
       wantedBy = [ "multi-user.target" ];
       description = "ProtonVPN-CLI auto-connect";

@@ -31,7 +31,6 @@
     gparted
     parted
     gcc
-    git-crypt
     git-filter-repo
     gnumake
     gnupg
