@@ -30,9 +30,27 @@
   hardware.bluetooth.enable = true;
 
   boot = {
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
     extraModulePackages = [ ];
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-amd" ];
+    kernelPatches = [
+      {
+        name = "trackpoint-ii-support";
+        patch = ./0001-Add-support-for-ThinkPad-TrackPoint-Keyboard-II.patch;
+        extraConfig = ''
+          DEBUG_INFO_BTF n
+        '';
+      }
+      {
+        name = "trackpoint-ii-sync-button-press";
+        patch = ./0002-Sync-Fn-lock-state-on-button-press-for-Compact-and-T.patch;
+        extraConfig = ''
+          DEBUG_INFO_BTF n
+        '';
+      }
+    ];
+
     loader = {
       efi = {
         canTouchEfiVariables = true;
@@ -99,7 +117,7 @@
       };
     };
   };
-
+  services.openssh.openFirewall = true;
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
 
