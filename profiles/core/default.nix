@@ -116,26 +116,18 @@ in
     };
   };
   nix = {
-
     autoOptimiseStore = true;
-
     gc.automatic = true;
-
     optimise.automatic = true;
-
     useSandbox = true;
-
     allowedUsers = [ "@wheel" ];
-
-    trustedUsers = [ "root" "@wheel" ];
-
+    trustedUsers = [ "root" "@wheel" "tgunnoe" ];
     extraOptions = ''
       min-free = 536870912
       keep-outputs = true
       keep-derivations = true
       fallback = true
     '';
-
   };
 
   programs.bash = {
