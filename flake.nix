@@ -53,7 +53,7 @@
       nixlib.follows = "digga/nixlib";
       blank.follows = "digga/blank";
       flake-utils-plus.follows = "digga/flake-utils-plus";
-      flake-utils.follows = "digga/flake-utils";
+      #flake-utils.follows = "digga/flake-utils";
       # end ANTI CORRUPTION LAYER
     };
 
