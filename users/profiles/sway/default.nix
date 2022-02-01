@@ -21,7 +21,7 @@
     autotiling
     #flashfocus
     i3-swallow
-    swaykbdd
+    #swaykbdd
 
     swaybg
     clipman
@@ -246,7 +246,7 @@
       startup = [
         { command = "systemctl --user restart waybar"; always = true; }
         { command = "${pkgs.autotiling}/bin/autotiling"; }
-        { command = "${pkgs.swaykbdd}/bin/swaykbdd"; }
+        #{ command = "${pkgs.swaykbdd}/bin/swaykbdd"; }
         #{ command = "${pkgs.flashfocus}/bin/flashfocus"; }
         { command = "${pkgs.mako}/bin/mako"; always = true; }
         { command = "${config.wayland.windowManager.sway.config.terminal} --title='dropdown'"; }
