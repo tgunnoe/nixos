@@ -22,7 +22,7 @@
   boot = {
     binfmt.emulatedSystems = [ "aarch64-linux" ];
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "kvm-intel" "v4l2loopback" "g_ether" ];
+    kernelModules = [ "kvm-intel" "g_ether" ];
     kernelPatches = [
       {
         name = "trackpoint-ii-support";
@@ -37,9 +37,9 @@
           '';
       }
     ];
-    extraModulePackages = [
-      pkgs.linuxKernel.packages.linux_5_15.v4l2loopback
-    ];
+    # extraModulePackages = [
+    #   pkgs.linuxKernel.packages.linux_5_15.v4l2loopback
+    # ];
     loader = {
       efi = {
         canTouchEfiVariables = true;
