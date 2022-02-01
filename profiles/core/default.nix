@@ -25,7 +25,7 @@ in
       jq
       manix
       moreutils
-
+      lsof
       nix-index
       nmap
       openssl
