@@ -956,6 +956,9 @@
           enable = true;
           command = [ "ripgrep-regexp" ];
         };
+        wgrep = {
+          enable = true;
+        };
         erc-sasl = {
           package = epkgs:
             epkgs.trivialBuild {
