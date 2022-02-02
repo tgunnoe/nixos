@@ -42,6 +42,9 @@
     less
     ncdu
     neofetch
+
+    #Nix-related
+    cachix
     nix-serve
     nixpkgs-review
 

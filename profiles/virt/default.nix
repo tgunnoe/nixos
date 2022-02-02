@@ -21,7 +21,7 @@
     docker-compose
     virt-manager
   ];
-
+  programs.dconf.enable = true;
   #environment.shellAliases.docker = "podman";
 
   # environment.sessionVariables = {
