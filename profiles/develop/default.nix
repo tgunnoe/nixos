@@ -50,7 +50,10 @@
     libusb1
     pkg-config
 
+    texlive.combined.scheme-full
     pandoc
+    #orgtoinvoice
+
     pkgconfig
     rubber
     sqlite
