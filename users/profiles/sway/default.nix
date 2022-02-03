@@ -27,7 +27,6 @@
     clipman
     drm_info
     gebaar-libinput # libinput gestures utility
-    swaylock-effects
     waypipe
     wdisplays
     wlr-randr
@@ -159,6 +158,8 @@
           "${modifier}+Ctrl+7" = "move container to workspace 7";
           "${modifier}+Ctrl+8" = "move container to workspace 8";
 
+          #"${modifier}+l" = "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}";
+
           "${modifier}+Shift+1" = "move container to workspace 1; workspace 1";
           "${modifier}+Shift+2" = "move container to workspace 2; workspace 2";
           "${modifier}+Shift+3" = "move container to workspace 3; workspace 3";
@@ -250,15 +251,15 @@
         #{ command = "${pkgs.flashfocus}/bin/flashfocus"; }
         { command = "${pkgs.mako}/bin/mako"; always = true; }
         { command = "${config.wayland.windowManager.sway.config.terminal} --title='dropdown'"; }
-        {
-          command = ''
-            ${pkgs.swayidle}/bin/swayidle -w \
-              timeout 300 "${pkgs.swaylock-effects}/bin/swaylock" \
-              timeout 600 'swaymsg "output * dpms off"' \
-              after-resume 'swaymsg "output * dpms on"' \
-              before-sleep "${pkgs.swaylock-effects}/bin/swaylock"
-          '';
-        }
+        # {
+        #   command = ''
+        #     ${pkgs.swayidle}/bin/swayidle -w \
+        #       timeout 300 "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}" \
+        #       timeout 600 'swaymsg "output * dpms off"' \
+        #       after-resume 'swaymsg "output * dpms on"' \
+        #       before-sleep "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}"
+        #   '';
+        # }
       ];
     };
     extraSessionCommands = ''

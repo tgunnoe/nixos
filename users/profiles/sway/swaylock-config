@@ -1,0 +1,16 @@
+screenshots
+clock
+indicator
+ignore-empty-password
+indicator-radius=200
+indicator-thickness=15
+effect-pixelate=5
+effect-greyscale
+effect-vignette=0.5:0.5
+ring-color=bb00cc
+key-hl-color=880033
+line-color=00000000
+inside-color=00000088
+separator-color=00000000
+grace=10
+fade-in=0.2
