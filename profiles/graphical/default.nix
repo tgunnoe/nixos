@@ -48,9 +48,7 @@ in
     };
 
     systemPackages = with pkgs; [
-      authy
       discord
-      firefox-wayland
       glxinfo
       imv
       ffmpeg-full
