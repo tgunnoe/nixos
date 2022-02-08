@@ -393,6 +393,12 @@
             ''("\\.go\\'" . go-mode)''
           ];
         };
+        solidity-mode = {
+          enable = true;
+          mode = [
+            ''("\\.sol\\'" . solidity-mode)''
+          ];
+        };
         ggtags = {
           enable = true;
           defer = true;
