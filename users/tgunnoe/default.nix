@@ -78,7 +78,9 @@ in
         #   signByDefault = true;
         # };
       };
-
+      firefox = {
+        enable = true;
+      };
       ssh = {
         enable = true;
         hashKnownHosts = true;

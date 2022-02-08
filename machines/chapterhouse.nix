@@ -35,20 +35,20 @@
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-amd" ];
     kernelPatches = [
-      {
-        name = "trackpoint-ii-support";
-        patch = ./0001-Add-support-for-ThinkPad-TrackPoint-Keyboard-II.patch;
-        extraConfig = ''
-          DEBUG_INFO_BTF n
-        '';
-      }
-      {
-        name = "trackpoint-ii-sync-button-press";
-        patch = ./0002-Sync-Fn-lock-state-on-button-press-for-Compact-and-T.patch;
-        extraConfig = ''
-          DEBUG_INFO_BTF n
-        '';
-      }
+      # {
+      #   name = "trackpoint-ii-support";
+      #   patch = ./0001-Add-support-for-ThinkPad-TrackPoint-Keyboard-II.patch;
+      #   extraConfig = ''
+      #     DEBUG_INFO_BTF n
+      #   '';
+      # }
+      # {
+      #   name = "trackpoint-ii-sync-button-press";
+      #   patch = ./0002-Sync-Fn-lock-state-on-button-press-for-Compact-and-T.patch;
+      #   extraConfig = ''
+      #     DEBUG_INFO_BTF n
+      #   '';
+      # }
     ];
 
     loader = {
