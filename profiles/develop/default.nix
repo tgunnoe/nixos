@@ -38,6 +38,7 @@
     go
     gopls
     gopass
+    go-2fa
 
     less
     ncdu

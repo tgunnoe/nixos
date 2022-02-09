@@ -49,6 +49,7 @@ in
 
     systemPackages = with pkgs; [
       discord
+      firefox-wayland
       glxinfo
       imv
       ffmpeg-full
