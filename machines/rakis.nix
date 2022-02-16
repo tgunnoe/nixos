@@ -96,7 +96,7 @@
         bg = "${self}/artwork/background.jpg fill";
         resolution = "3840x2160@60hz";
         scale = "1.5";
-        position = "-1920 0";
+        position = "2880 0";
       };
     };
     input = {
