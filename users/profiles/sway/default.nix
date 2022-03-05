@@ -1,4 +1,18 @@
 { config, lib, pkgs, ... }:
+let
+  dbus-sway-environment = pkgs.writeTextFile {
+    name = "dbus-sway-environment";
+    destination = "/bin/dbus-sway-environment";
+    executable = true;
+
+    text = ''
+  dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+  systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+  systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+      '';
+  };
+
+in
 {
   imports = [ ./waybar.nix ];
 
@@ -12,7 +26,8 @@
     imv
     wf-recorder
     wl-clipboard
-
+    dbus-sway-environment
+    glib
     xdg_utils
     xwayland
     libnl
@@ -40,7 +55,7 @@
   ];
   wayland.windowManager.sway = {
     enable = true;
-
+    wrapperFeatures.gtk = true;
     config = {
       terminal = "${pkgs.kitty}/bin/kitty";
       assigns = {

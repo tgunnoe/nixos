@@ -112,7 +112,9 @@ in
         xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
       ];
-      gtkUsePortal = true;
+    wlr.enable = true;
+    # gtk portal needed to make gtk apps happy
+    gtkUsePortal = true;
     };
   };
   nix = {
@@ -143,7 +145,12 @@ in
   };
 
   services.earlyoom.enable = true;
-  services.pipewire.enable = true;
+  services.pipewire = {
+    alsa.enable = true;
+    pulse.enable = true;
+    enable = true;
+  };
+  services.dbus.enable = true;
   users.mutableUsers = false;
 
 }
