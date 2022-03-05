@@ -21,22 +21,22 @@
 
   boot = {
     binfmt.emulatedSystems = [ "aarch64-linux" ];
-    kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "kvm-intel" "g_ether" ];
-    kernelPatches = [
-      {
-        name = "trackpoint-ii-support";
-        patch = ./0001-Add-support-for-ThinkPad-TrackPoint-Keyboard-II.patch;
-        extraConfig = ''
-          '';
-      }
-      {
-        name = "trackpoint-ii-sync-button-press";
-        patch = ./0002-Sync-Fn-lock-state-on-button-press-for-Compact-and-T.patch;
-        extraConfig = ''
-          '';
-      }
-    ];
+    kernelPackages = pkgs.linuxPackages_xanmod;
+    kernelModules = [ "kvm-intel" "g_ether" "binder_linux" ];
+    # kernelPatches = [
+    #   {
+    #     name = "trackpoint-ii-support";
+    #     patch = ./0001-Add-support-for-ThinkPad-TrackPoint-Keyboard-II.patch;
+    #     extraConfig = ''
+    #       '';
+    #   }
+    #   {
+    #     name = "trackpoint-ii-sync-button-press";
+    #     patch = ./0002-Sync-Fn-lock-state-on-button-press-for-Compact-and-T.patch;
+    #     extraConfig = ''
+    #       '';
+    #   }
+    # ];
     # extraModulePackages = [
     #   pkgs.linuxKernel.packages.linux_5_15.v4l2loopback
     # ];
