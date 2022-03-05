@@ -15,9 +15,9 @@
       digga.inputs.nixlib.follows = "nixos";
       digga.inputs.home-manager.follows = "home";
 
-      bud.url = "github:divnix/bud";
-      bud.inputs.nixpkgs.follows = "nixos";
-      bud.inputs.devshell.follows = "digga/devshell";
+      # bud.url = "github:divnix/bud";
+      # bud.inputs.nixpkgs.follows = "nixos";
+      # bud.inputs.devshell.follows = "digga/devshell";
 
       home.url = "github:nix-community/home-manager/release-21.05";
       home.inputs.nixpkgs.follows = "nixos";
@@ -46,21 +46,12 @@
       naersk.inputs.nixpkgs.follows = "latest";
 
       nixos-hardware.url = "github:nixos/nixos-hardware";
-
-      # start ANTI CORRUPTION LAYER
-      # remove after https://github.com/NixOS/nix/pull/4641
-      nixpkgs.follows = "nixos";
-      nixlib.follows = "digga/nixlib";
-      blank.follows = "digga/blank";
-      flake-utils-plus.follows = "digga/flake-utils-plus";
-      #flake-utils.follows = "digga/flake-utils";
-      # end ANTI CORRUPTION LAYER
     };
 
   outputs =
     { self
     , digga
-    , bud
+#    , bud
     , nixos
     , home
     , extra-container
@@ -121,7 +112,7 @@
               home.nixosModules.home-manager
               extra-container.nixosModule
               agenix.nixosModules.age
-              bud.nixosModules.bud
+              #bud.nixosModules.bud
               #repos.emmanuelrosa.modules.protonvpn
               ({ pkgs, ... }:
                 let
@@ -191,14 +182,14 @@
 
         deploy.nodes = digga.lib.mkDeployNodes self.nixosConfigurations { };
 
-        defaultTemplate = self.templates.bud;
-        templates.bud.path = ./.;
-        templates.bud.description = "bud template";
+        # defaultTemplate = self.templates.bud;
+        # templates.bud.path = ./.;
+        # templates.bud.description = "bud template";
 
       }
     //
     {
-      budModules = { devos = import ./bud; };
+#      budModules = { devos = import ./bud; };
     }
   ;
 }
