@@ -34,7 +34,7 @@ in
       skim
       tealdeer
       screen
-      telnet
+      inetutils
       utillinux
       whois
     ];

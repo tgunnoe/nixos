@@ -56,7 +56,7 @@ in
       imagemagick
       librsvg
       libsForQt5.qtstyleplugins
-      manpages
+      man-pages
       pulsemixer
       pavucontrol
       qt5.qtgraphicaleffects
@@ -65,7 +65,7 @@ in
       inkscape
       chromium
       nomacs
-      torbrowser
+      tor-browser-bundle-bin
       nyxt
       pcmanfm
       mupdf

@@ -4,7 +4,7 @@
 
   imports = [ ./zsh ./tmux ./rust ./python ];
 
-  environment.shellAliases = { v = "$EDITOR"; pass = "gopass"; };
+  environment.shellAliases = { ssh = "kitty +kitten ssh"; };
 
   environment.sessionVariables = {
     PAGER = "less";
@@ -65,7 +65,7 @@
     tokei
     viu
     wget
-    youtubeDL
+    youtube-dl
     #lmms
     #fluidsynth
     #audacity
