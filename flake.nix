@@ -136,6 +136,12 @@
                 #mobile-nixos.nixosModules.pine64-pinephone
               ];
             };
+            sietch-tabr = {
+              system = "aarch64-linux";
+              modules = [
+              ];
+            };
+
           };
           importables = rec {
             profiles = digga.lib.rakeLeaves ./profiles // {

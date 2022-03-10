@@ -1,7 +1,7 @@
 { self, lib, config, pkgs, suites, ... }:
 
 {
-  imports = ["${fetchTarball "https://github.com/NixOS/nixos-hardware/archive/8f1bf828d8606fe38a02df312cf14546ae200a72.tar.gz" }/raspberry-pi/4"]
+  imports = ["${fetchTarball { url = "https://github.com/NixOS/nixos-hardware/archive/8f1bf828d8606fe38a02df312cf14546ae200a72.tar.gz"; sha256 = "1zrfn14phsxhrlbsv6vvj8910kiybk5740q6djkpcy4ppg0r3j1l"; }/raspberry-pi/4"]
             ++ suites.goPlay;
 
   fileSystems = {
