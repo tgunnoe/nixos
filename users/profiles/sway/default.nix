@@ -11,7 +11,19 @@ let
   systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
       '';
   };
-
+  configure-gtk = pkgs.writeTextFile {
+      name = "configure-gtk";
+      destination = "/bin/configure-gtk";
+      executable = true;
+      text = let
+        schema = pkgs.gsettings-desktop-schemas;
+        datadir = "${schema}/share/gsettings-schemas/${schema.name}";
+      in ''
+        export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
+        gnome_schema=org.gnome.desktop.interface
+        gsettings set $gnome_schema gtk-theme 'Dracula'
+        '';
+  };
 in
 {
   imports = [ ./waybar.nix ];
@@ -27,6 +39,7 @@ in
     wf-recorder
     wl-clipboard
     dbus-sway-environment
+    configure-gtk
     glib
     xdg_utils
     xwayland
@@ -266,6 +279,9 @@ in
         #{ command = "${pkgs.flashfocus}/bin/flashfocus"; }
         { command = "${pkgs.mako}/bin/mako"; always = true; }
         { command = "${config.wayland.windowManager.sway.config.terminal} --title='dropdown'"; }
+        { command = "${config.wayland.windowManager.sway.config.terminal} --title='dropdown'"; }
+        { command = "${dbus-sway-environment}"; }
+        { command = "${configure-gtk}"; }
         # {
         #   command = ''
         #     ${pkgs.swayidle}/bin/swayidle -w \
