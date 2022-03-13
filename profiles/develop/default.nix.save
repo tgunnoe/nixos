@@ -1,10 +1,11 @@
+
 { pkgs, ... }:
 
 {
 
   imports = [ ./zsh ./tmux ./rust ./python ];
 
-  #environment.shellAliases = { ssh = "kitty +kitten ssh"; };
+  environment.shellAliases = { ssh = "kitty +kitten ssh"; };
 
   environment.sessionVariables = {
     PAGER = "less";
@@ -93,6 +94,6 @@
   programs.thefuck.enable = true;
   programs.firejail.enable = true;
   programs.mtr.enable = true;
-  #  programs.sysdig.enable = true;
+  programs.sysdig.enable = true;
   security.audit.enable = true;
 }

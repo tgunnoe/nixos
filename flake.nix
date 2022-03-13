@@ -102,7 +102,7 @@
 
         nixos = {
           hostDefaults = {
-            system = "x86_64-linux";
+            system = "aarch64-linux";
             channelName = "nixos";
             imports = [ (digga.lib.importExportableModules ./modules) ];
             modules = [
@@ -117,7 +117,7 @@
               ({ pkgs, ... }:
                 let
                   nur-no-pkgs = import nur {
-                    nurpkgs = import nixos { system = "x86_64-linux"; };
+                    nurpkgs = import nixos { system = "aarch64-linux"; };
                   };
                 in
                 {

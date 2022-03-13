@@ -48,7 +48,7 @@ in
     };
 
     systemPackages = with pkgs; [
-      discord
+      #discord
       firefox-wayland
       glxinfo
       imv
@@ -65,7 +65,7 @@ in
       inkscape
       chromium
       nomacs
-      tor-browser-bundle-bin
+      #tor-browser-bundle-bin
       nyxt
       pcmanfm
       mupdf

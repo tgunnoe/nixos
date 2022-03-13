@@ -5,7 +5,7 @@ channels: final: prev: {
   inherit (channels.latest)
     cachix
     dhall
-    discord
+    #discord
     element-desktop
     rage
     nixpkgs-fmt
