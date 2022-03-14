@@ -104,28 +104,28 @@ in
     longitude = -80.0;
   };
   time.timeZone = "America/New_York";
-  systemd.services.protonvpn-autoconnect = {
-      wantedBy = [ "multi-user.target" ];
-      description = "ProtonVPN-CLI auto-connect";
-      wants = [ "network-online.target" ];
-      path = with pkgs;
-        with pkgs.python3Packages; [
-          protonvpn-cli
-          dialog
-          iproute
-          iptables
-          openvpn
-          procps
-          which
-        ];
-      serviceConfig = {
-        Type = "forking";
-        Environment =
-          [ "PVPN_WAIT=300" "PVPN_DEBUG=1" "SUDO_USER=tgunnoe" ];
-        ExecStart =
-          "${pkgs.protonvpn-cli}/bin/protonvpn c --p2p";
-      };
-    };
+  # systemd.services.protonvpn-autoconnect = {
+  #     wantedBy = [ "multi-user.target" ];
+  #     description = "ProtonVPN-CLI auto-connect";
+  #     wants = [ "network-online.target" ];
+  #     path = with pkgs;
+  #       with pkgs.python3Packages; [
+  #         protonvpn-cli
+  #         dialog
+  #         iproute
+  #         iptables
+  #         openvpn
+  #         procps
+  #         which
+  #       ];
+  #     serviceConfig = {
+  #       Type = "forking";
+  #       Environment =
+  #         [ "PVPN_WAIT=300" "PVPN_DEBUG=1" "SUDO_USER=tgunnoe" ];
+  #       ExecStart =
+  #         "${pkgs.protonvpn-cli}/bin/protonvpn c --p2p";
+  #     };
+  #   };
 
 
 }
