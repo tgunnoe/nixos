@@ -21,8 +21,8 @@
 
   boot = {
     binfmt.emulatedSystems = [ "aarch64-linux" ];
-    kernelPackages = pkgs.linuxPackages_xanmod;
-    kernelModules = [ "kvm-intel" "g_ether" "binder_linux" ];
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelModules = [ "kvm-intel" "g_ether" ];
     # kernelPatches = [
     #   {
     #     name = "trackpoint-ii-support";
@@ -121,7 +121,7 @@
   };
   services.tlp.enable = true;
   services.logind.extraConfig = "HandlePowerKey=ignore";
-  services.thermald.enable = true;
+  #services.thermald.enable = true;
   services.hdapsd.enable = true;
   services.fstrim.enable = true;
   networking = {
