@@ -5,6 +5,7 @@
     lm_sensors
     wirelesstools
     libcamera
+    webcamoid
     v4l-utils
     pciutils
     usbutils
@@ -54,7 +55,7 @@
   services.logind.extraConfig = "HandlePowerKey=ignore";
   services.logind.lidSwitch = "suspend";
 
-  services.thermald.enable = true;
+  #services.thermald.enable = true;
   services.hdapsd.enable = true;
 
   services.fwupd.enable = true;
