@@ -14,6 +14,7 @@
     spring
     springLobby
     lutris
+    wine
     winetricks
   ];
 

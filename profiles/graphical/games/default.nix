@@ -6,7 +6,7 @@
     openra
     openal
     gzdoom
-    #lzwolf
+    lzwolf
     #steam-run
     #    spring
     #    springLobby

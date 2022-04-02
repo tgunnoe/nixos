@@ -15,11 +15,7 @@
       digga.inputs.nixlib.follows = "nixos";
       digga.inputs.home-manager.follows = "home";
 
-      # bud.url = "github:divnix/bud";
-      # bud.inputs.nixpkgs.follows = "nixos";
-      # bud.inputs.devshell.follows = "digga/devshell";
-
-      home.url = "github:nix-community/home-manager/release-21.05";
+      home.url = "github:nix-community/home-manager/release-21.11";
       home.inputs.nixpkgs.follows = "nixos";
 
       extra-container.url = "github:erikarvstedt/extra-container";
@@ -51,7 +47,6 @@
   outputs =
     { self
     , digga
-#    , bud
     , nixos
     , home
     , extra-container
@@ -102,7 +97,7 @@
 
         nixos = {
           hostDefaults = {
-            system = "aarch64-linux";
+            system = "x86_64-linux";
             channelName = "nixos";
             imports = [ (digga.lib.importExportableModules ./modules) ];
             modules = [
@@ -117,7 +112,7 @@
               ({ pkgs, ... }:
                 let
                   nur-no-pkgs = import nur {
-                    nurpkgs = import nixos { system = "aarch64-linux"; };
+                    nurpkgs = import nixos { system = "x86_64-linux"; };
                   };
                 in
                 {
@@ -131,13 +126,13 @@
             /* set host specific properties here */
             NixOS = { };
             ithaca = {
-              system = "aarch64-linux";
+              system = "x86_64-linux";
               modules = [
                 #mobile-nixos.nixosModules.pine64-pinephone
               ];
             };
             sietch-tabr = {
-              system = "aarch64-linux";
+              system = "x86_64-linux";
               modules = [
               ];
             };

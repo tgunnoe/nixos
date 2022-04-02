@@ -50,6 +50,7 @@ in
     #flashfocus
     i3-swallow
     #swaykbdd
+    cage
 
     swaybg
     clipman
@@ -70,7 +71,7 @@ in
     enable = true;
     wrapperFeatures.gtk = true;
     config = {
-      terminal = "${pkgs.termite}/bin/termite";
+      terminal = "${pkgs.kitty}/bin/kitty";
       assigns = {
         "1: web" = [{ class = "^Firefox$"; }];
         "0: extra" = [{ class = "^Firefox$"; window_role = "About"; }];
@@ -318,9 +319,9 @@ in
     sort = "-priority";
   };
 
-  # services.gammastep = {
-  #   latitude = config.location.latitude;
-  #   longitude = config.location.longitude;
-  #   enable = true;
-  # };
+  services.gammastep = {
+    latitude = 38.0;
+    longitude = -80.0;
+    enable = true;
+  };
 }

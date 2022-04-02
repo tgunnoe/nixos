@@ -95,4 +95,5 @@
   programs.mtr.enable = true;
   #  programs.sysdig.enable = true;
   security.audit.enable = true;
+  security.polkit.enable = true;
 }
