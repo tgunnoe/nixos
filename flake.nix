@@ -35,8 +35,8 @@
 
       nvfetcher.url = "github:berberman/nvfetcher";
       nvfetcher.inputs.nixpkgs.follows = "latest";
-      nvfetcher.inputs.flake-compat.follows = "digga/deploy/flake-compat";
-      nvfetcher.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
+      #nvfetcher.inputs.flake-compat.follows = "digga/deploy/flake-compat";
+      #nvfetcher.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
 
       naersk.url = "github:nmattia/naersk";
       naersk.inputs.nixpkgs.follows = "latest";
