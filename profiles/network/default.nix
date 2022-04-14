@@ -3,7 +3,7 @@
 
 
   environment.systemPackages = with pkgs; [
-
+    iproute2
     protonvpn-cli
     transmission-gtk
   ];
