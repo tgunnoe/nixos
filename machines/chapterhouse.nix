@@ -16,11 +16,18 @@
       device = "/dev/disk/by-uuid/2EB0-BB29";
       fsType = "vfat";
     };
-  fileSystems."/data" =
+ # fileSystems."/data" =
+ #   {
+ #     device = "/dev/disk/by-uuid/0a782a06-91e8-40ae-88fa-6ebe18b7ea74";
+ #     fsType = "ext4";
+ #   };
+  fileSystems."/tmp" =
     {
-      device = "/dev/disk/by-uuid/0a782a06-91e8-40ae-88fa-6ebe18b7ea74";
-      fsType = "ext4";
+      device = "tmpfs";
+      fsType = "tmpfs";
+      options = [ "nosuid" "nodev" "relatime" "size=32G"];
     };
+
 
   swapDevices =
     [{ device = "/dev/disk/by-uuid/04983f36-41ad-4dea-9227-6a3f06fbbb11"; }];
@@ -32,6 +39,11 @@
   boot = {
     binfmt.emulatedSystems = [ "aarch64-linux" ];
     extraModulePackages = [ ];
+    extraModprobeConfig = ''
+      options kvm_intel nested=1
+      options kvm_intel emulate_invalid_guest_state=0
+      options kvm ignore_msrs=1
+    '';
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-amd" ];
     kernelPatches = [
