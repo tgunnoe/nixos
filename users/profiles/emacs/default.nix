@@ -683,7 +683,8 @@
           command = [ "global-undo-tree-mode" ];
           config = ''
             (setq undo-tree-visualizer-relative-timestamps t
-                  undo-tree-visualizer-timestamps t)
+                  undo-tree-visualizer-timestamps t
+                  undo-tree-auto-save-history nil)
             (global-undo-tree-mode)
           '';
         };
