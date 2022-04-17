@@ -121,7 +121,7 @@
   };
   services.tlp.enable = true;
   services.logind.extraConfig = "HandlePowerKey=ignore";
-  #services.thermald.enable = true;
+  services.thermald.enable = true;
   services.hdapsd.enable = true;
   services.fstrim.enable = true;
   networking = {

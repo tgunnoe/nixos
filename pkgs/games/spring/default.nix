@@ -34,7 +34,7 @@ let
     owner = "beyond-all-reason";
     repo = "Beyond-All-Reason";
     rev = "23bca51494640a8a1a1fc2c4f1ab259291d8bcb4";
-    sha256 = "sha256-DJDef4YM31DzSYiXdskQxpyGlIKaMysObSBvQUbPNmA=";
+    sha256 = "sha256-AxTBw/YZaMKQIpERvBRbHga0n7fLiSygfOrV/f2nrrg=";
   };
   barChobby = fetchFromGitHub {
     owner = "beyond-all-reason";
