@@ -11,6 +11,7 @@
     steam-tui
     steamcmd
     #lzwolf
+    faforever
     steam-run
     spring
     springLobby
