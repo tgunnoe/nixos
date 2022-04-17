@@ -30,7 +30,7 @@ in
 
   home.packages = with pkgs; [
     swayidle
-    #swaylock # screen locking
+    swaylock # screen locking
     grim
     sway-contrib.grimshot
     slurp
@@ -187,7 +187,7 @@ in
           "${modifier}+Ctrl+7" = "move container to workspace 7";
           "${modifier}+Ctrl+8" = "move container to workspace 8";
 
-          #"${modifier}+l" = "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}";
+          "${modifier}+l" = "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}";
 
           "${modifier}+Shift+1" = "move container to workspace 1; workspace 1";
           "${modifier}+Shift+2" = "move container to workspace 2; workspace 2";
@@ -277,21 +277,21 @@ in
         { command = "systemctl --user restart waybar"; always = true; }
         { command = "${pkgs.autotiling}/bin/autotiling"; }
         #{ command = "${pkgs.swaykbdd}/bin/swaykbdd"; }
-        #{ command = "${pkgs.flashfocus}/bin/flashfocus"; }
+        { command = "${pkgs.flashfocus}/bin/flashfocus"; }
         { command = "${pkgs.mako}/bin/mako"; always = true; }
         { command = "${config.wayland.windowManager.sway.config.terminal} --title='dropdown'"; }
         { command = "${config.wayland.windowManager.sway.config.terminal} --title='dropdown'"; }
         { command = "${dbus-sway-environment}"; }
         { command = "${configure-gtk}"; }
-        # {
-        #   command = ''
-        #     ${pkgs.swayidle}/bin/swayidle -w \
-        #       timeout 300 "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}" \
-        #       timeout 600 'swaymsg "output * dpms off"' \
-        #       after-resume 'swaymsg "output * dpms on"' \
-        #       before-sleep "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}"
-        #   '';
-        # }
+        {
+          command = ''
+            ${pkgs.swayidle}/bin/swayidle -w \
+              timeout 300 "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}" \
+              timeout 600 'swaymsg "output * dpms off"' \
+              after-resume 'swaymsg "output * dpms on"' \
+              before-sleep "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}"
+          '';
+        }
       ];
     };
     extraSessionCommands = ''
