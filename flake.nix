@@ -15,7 +15,7 @@
       digga.inputs.nixlib.follows = "nixos";
       digga.inputs.home-manager.follows = "home";
 
-      home.url = "github:nix-community/home-manager/release-21.11";
+      home.url = "github:nix-community/home-manager";
       home.inputs.nixpkgs.follows = "nixos";
 
       extra-container.url = "github:erikarvstedt/extra-container";
