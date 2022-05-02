@@ -109,9 +109,9 @@
       "Ancor Communications Inc ASUS MG28U 0x00001BF4" = {
         bg = "${self}/artwork/background.jpg fill";
         resolution = "3840x2160@60hz";
-        position = "3440 -720";
+        position = "3440 0";
         scale = "1.5";
-        transform = "270";
+        #transform = "270";
       };
     };
 
