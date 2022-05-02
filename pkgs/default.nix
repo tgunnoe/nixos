@@ -14,4 +14,6 @@ final: prev: {
   spring = prev.callPackage ./games/spring { };
 
   swaykbdd = prev.callPackage ./wayland/swaykbdd { };
+
+  vcmi = prev.callPackage ./games/vcmi { };
 }
