@@ -20,7 +20,7 @@
     appimage-run
     adoptopenjdk-icedtea-web
     deploy-rs.deploy-rs
-    libbitcoin-explorer
+    #libbitcoin-explorer
     wf-recorder
     boost175
     bottom

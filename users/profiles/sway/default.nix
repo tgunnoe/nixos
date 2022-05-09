@@ -55,7 +55,7 @@ in
     swaybg
     clipman
     drm_info
-    gebaar-libinput # libinput gestures utility
+    #gebaar-libinput # libinput gestures utility
     waypipe
     wdisplays
     wlr-randr
@@ -90,6 +90,12 @@ in
           }
           {
             command = "exec ${./fadein.sh}";
+            criteria = {
+              app_id = ".*";
+            };
+          }
+          {
+            command = "exec ${./swallow.py}";
             criteria = {
               app_id = ".*";
             };

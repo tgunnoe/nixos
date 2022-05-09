@@ -13,8 +13,8 @@
     #lzwolf
     faforever
     steam-run
-    spring
-    springLobby
+    #spring
+    #springLobby
     lutris
     wine
     winetricks
