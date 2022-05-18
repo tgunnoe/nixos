@@ -92,6 +92,9 @@ in
           };
         };
       };
+      nix-index = {
+        enable = true;
+      };
     };
     services.gammastep = {
       enable = true;
