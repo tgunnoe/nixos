@@ -107,8 +107,8 @@
         (put 'upcase-region 'disabled nil)
         (put 'downcase-region 'disabled nil)
 
-        (setq custom-file (locate-user-emacs-file "custom.el"))
-        (load custom-file)
+        ;; (setq custom-file (locate-user-emacs-file "custom.el"))
+        ;; (load custom-file)
 
         ;; When finding file in non-existing directory, offer to create the
         ;; parent directory.
@@ -597,6 +597,10 @@
             ;; Silence missing function warnings
             (declare-function global-hungry-delete-mode "hungry-delete.el"))
           '';
+          hook = [
+            "(add-hook 'minibuffer-setup-hook (lambda () (hungry-delete-mode -1)))"
+          ];
+
           config = ''
             (global-hungry-delete-mode t)
           '';
