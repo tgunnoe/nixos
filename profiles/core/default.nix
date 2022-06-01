@@ -98,7 +98,7 @@ in
   };
 
   fonts = {
-    fonts = with pkgs; [ powerline-fonts dejavu_fonts ];
+    fonts = with pkgs; [ powerline-fonts dejavu_fonts nerdfonts ];
     fontconfig.defaultFonts = {
       monospace = [ "DejaVu Sans Mono for Powerline" ];
       sansSerif = [ "DejaVu Sans" ];
@@ -111,9 +111,9 @@ in
         xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
       ];
-    wlr.enable = true;
-    # gtk portal needed to make gtk apps happy
-    gtkUsePortal = true;
+      wlr.enable = true;
+      # gtk portal needed to make gtk apps happy
+      gtkUsePortal = true;
     };
   };
   nix = {
