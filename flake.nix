@@ -7,7 +7,7 @@
 
   inputs =
     {
-      nixos.url = "github:nixos/nixpkgs/nixos-unstable";
+      nixos.url = "github:nixos/nixpkgs/nixos-22.05";
       latest.url = "github:nixos/nixpkgs/nixos-unstable";
 
       digga.url = "github:divnix/digga";
@@ -20,8 +20,10 @@
 
       extra-container.url = "github:erikarvstedt/extra-container";
       extra-container.inputs.nixpkgs.follows = "nixos";
+      extra-container.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
 
-      emacs.url = "github:nix-community/emacs-overlay";
+      emacs.url = "github:nix-community/emacs-overlay/334ba8c610cf5e41dfe130507030e5587e3551b4";
+      emacs.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
 
       deploy.follows = "digga/deploy";
 
@@ -35,8 +37,8 @@
 
       nvfetcher.url = "github:berberman/nvfetcher";
       nvfetcher.inputs.nixpkgs.follows = "latest";
-      #nvfetcher.inputs.flake-compat.follows = "digga/deploy/flake-compat";
-      #nvfetcher.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
+      nvfetcher.inputs.flake-compat.follows = "digga/deploy/flake-compat";
+      nvfetcher.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
 
       naersk.url = "github:nmattia/naersk";
       naersk.inputs.nixpkgs.follows = "latest";
@@ -116,7 +118,9 @@
                   };
                 in
                 {
-                  imports = [ nur-no-pkgs.repos.emmanuelrosa.modules.protonvpn ];
+                  imports = [
+                    # nur-no-pkgs.repos.emmanuelrosa.modules.protonvpn
+                  ];
                 })
             ];
           };
@@ -164,7 +168,10 @@
             profiles = digga.lib.rakeLeaves ./users/profiles;
             suites = with profiles; rec {
               base = [ direnv git ];
-              develop = base ++ [ profiles.emacs profiles.zsh ];
+              develop = base ++ [
+                profiles.emacs
+                profiles.zsh
+              ];
               noemacs = base ++ [ profiles.zsh ];
               graphics = develop ++ [ kitty sway ];
             };
@@ -190,7 +197,7 @@
       }
     //
     {
-#      budModules = { devos = import ./bud; };
+      #      budModules = { devos = import ./bud; };
     }
   ;
 }
