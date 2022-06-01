@@ -8,7 +8,7 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs;
+    package = pkgs.emacsPgtkNativeComp;
     init = {
       enable = true;
       recommendedGcSettings = true;
@@ -320,25 +320,25 @@
             (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
           '';
         };
-        doom-themes = {
-          enable = true;
-          config = ''
-            ;; Global settings (defaults)
-            (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-              doom-themes-enable-italic t) ; if nil, italics is universally disabled
-            (load-theme 'doom-one t)
+        # doom-themes = {
+        #   enable = true;
+        #   config = ''
+        #     ;; Global settings (defaults)
+        #     (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        #       doom-themes-enable-italic t) ; if nil, italics is universally disabled
+        #     (load-theme 'doom-one t)
 
-            ;; Enable custom neotree theme (all-the-icons must be installed!)
-            ;;(doom-themes-neotree-config)
+        #     ;; Enable custom neotree theme (all-the-icons must be installed!)
+        #     ;;(doom-themes-neotree-config)
 
-            ;; or for treemacs users
-            ;; (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-            ;;(doom-themes-treemacs-config)
+        #     ;; or for treemacs users
+        #     ;; (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+        #     ;;(doom-themes-treemacs-config)
 
-            ;; Corrects (and improves) org-mode's native fontification.
-            ;; (doom-themes-org-config)
-          '';
-        };
+        #     ;; Corrects (and improves) org-mode's native fontification.
+        #     ;; (doom-themes-org-config)
+        #   '';
+        # };
         drag-stuff = {
           enable = true;
           bind = {
@@ -1471,11 +1471,11 @@
           '';
         };
 
-        php-mode = {
-          enable = true;
-          mode = [ ''"\\.php\\'"'' ];
-          hook = [ "ggtags-mode" ];
-        };
+        #php-mode = {
+        #  enable = true;
+        #  mode = [ ''"\\.php\\'"'' ];
+        #  hook = [ "ggtags-mode" ];
+        #};
 
         protobuf-mode = {
           enable = true;
