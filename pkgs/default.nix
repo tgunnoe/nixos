@@ -15,5 +15,7 @@ final: prev: {
 
   swaykbdd = prev.callPackage ./wayland/swaykbdd { };
 
+  tdm = prev.callPackage ./games/tdm { };
+
   vcmi = prev.callPackage ./games/vcmi { };
 }
