@@ -10,6 +10,6 @@
       font_size = "8.0";
       enable_audio_bell = false;
     };
-    theme = "Encom";
+    theme = "Alien Blood";
   };
 }
