@@ -25,7 +25,7 @@
   # fps games on laptop need this
   #services.xserver.libinput.touchpad.disableWhileTyping = false;
 
-  #services.xserver.windowManager.steam = { enable = true; };
+  services.xserver.windowManager.steam = { enable = true; };
 
   # 32-bit support needed for steam
   hardware.opengl.driSupport = true;

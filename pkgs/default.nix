@@ -18,4 +18,6 @@ final: prev: {
   tdm = prev.callPackage ./games/tdm { };
 
   vcmi = prev.callPackage ./games/vcmi { };
+
+  steamcompmgr = prev.callPackage ./applications/window-managers/steam { };
 }
