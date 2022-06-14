@@ -1,17 +1,22 @@
-{ lib, stdenv, fetchFromGitHub
-, meson, ninja, pkg-config, cmake
+{ lib
+, stdenv
+, fetchFromGitHub
+, meson
+, ninja
+, pkg-config
+, cmake
 , json_c
 }:
 
 stdenv.mkDerivation rec {
   pname = "swaykbdd";
-  version = "4a7586f3ffb7cb09f40dc3b06be859d3c2d609f2";
+  version = "9c4d78f2a2e4270dd605681c9eca8b0bc735fdbc";
 
   src = fetchFromGitHub {
     owner = "artemsen";
     repo = "swaykbdd";
     rev = "${version}";
-    sha256 = "96fUkj0W1DdQq8ZcNHfm5VE1zABnyhqUJ7SV6c00RQE=";
+    sha256 = "sha256-umYPVkkYeu6TyVkjDsVBsRZLYh8WyseCPdih85kTz6A=";
   };
 
   depsBuildBuild = [ pkg-config ];
@@ -19,7 +24,7 @@ stdenv.mkDerivation rec {
   buildInputs = [ json_c ];
 
   mesonFlags = [
-    "-Dman-pages=enabled"
+    #    "-Dman-pages=enabled"
   ];
 
   meta = with lib; {

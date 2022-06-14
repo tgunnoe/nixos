@@ -102,7 +102,7 @@
     input = {
       "1:1:AT_Translated_Set_2_keyboard" = {
         xkb_layout = "dvorak,us";
-        xkb_options = "ctrl:nocaps";
+        xkb_options = "ctrl:nocaps,grp:rctrl_toggle";
       };
       "2362:628:PIXA3854:00_093A:0274_Touchpad" = {
         tap = "enabled";

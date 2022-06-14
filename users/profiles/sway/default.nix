@@ -47,7 +47,7 @@ in
     autotiling
     #flashfocus
     i3-swallow
-    #swaykbdd
+    swaykbdd
     cage
 
     swaybg
@@ -134,9 +134,6 @@ in
         smartBorders = "on";
       };
       input = {
-        "*" = {
-          xkb_variant = "dvorak";
-        };
         "6127:24814:Lenovo_TrackPoint_Keyboard_II" = {
           xkb_layout = "dvorak";
           xkb_variant = ",nodeadkeys";
@@ -280,7 +277,7 @@ in
       startup = [
         { command = "systemctl --user restart waybar"; always = true; }
         { command = "${pkgs.autotiling}/bin/autotiling"; }
-        #{ command = "${pkgs.swaykbdd}/bin/swaykbdd"; }
+        { command = "${pkgs.swaykbdd}/bin/swaykbdd"; }
         { command = "${pkgs.flashfocus}/bin/flashfocus"; }
         { command = "${pkgs.mako}/bin/mako"; always = true; }
         { command = "${config.wayland.windowManager.sway.config.terminal} --title='dropdown'"; }
