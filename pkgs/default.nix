@@ -20,4 +20,6 @@ final: prev: {
   vcmi = prev.callPackage ./games/vcmi { };
 
   steamcompmgr = prev.callPackage ./applications/window-managers/steam { };
+
+  opennox = prev.callPackage ./games/opennox { };
 }
