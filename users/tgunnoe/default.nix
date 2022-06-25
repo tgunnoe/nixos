@@ -52,6 +52,7 @@ in
   home-manager.users.tgunnoe = { suites, lib, nur, ... }: {
     imports = suites.graphics;
     home = {
+      stateVersion = "18.09";
       file = {
         #".zshrc".text = "#";
         ".gnupg/gpg-agent.conf".text = ''

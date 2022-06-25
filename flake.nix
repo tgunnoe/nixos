@@ -25,6 +25,9 @@
       emacs.url = "github:nix-community/emacs-overlay/334ba8c610cf5e41dfe130507030e5587e3551b4";
       emacs.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
 
+      nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+      nixpkgs-wayland.inputs.nixpkgs.follows = "nixos";
+
       deploy.follows = "digga/deploy";
 
       agenix.url = "github:ryantm/agenix";
@@ -58,6 +61,7 @@
     , nvfetcher
     , deploy
     , emacs
+    , nixpkgs-wayland
     , ...
     } @ inputs:
     digga.lib.mkFlake
@@ -76,6 +80,7 @@
               nvfetcher.overlay
               deploy.overlay
               emacs.overlay
+              nixpkgs-wayland.overlay
               ./pkgs/default.nix
             ];
           };

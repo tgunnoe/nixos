@@ -13,6 +13,7 @@
     #lzwolf
     faforever
     steam-run
+    steamcompmgr
     #spring
     #springLobby
     lutris
