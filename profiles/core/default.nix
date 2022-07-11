@@ -153,6 +153,13 @@ in
     pulse.enable = true;
     enable = true;
   };
+  services.kmscon = {
+    extraConfig = "xkb-variant=dvorak";
+    enable = true;
+  };
+  services.gpm = {
+    enable = true;
+  };
   services.dbus.enable = true;
   users.mutableUsers = false;
 
