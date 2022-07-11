@@ -13,7 +13,7 @@ buildGo118Module {
   };
 
   vendorSha256 = "sha256-Za7bOer68APzM0GjhNEEHhrBLi2xsWPdn59dpaI8J/o=";
-
+  #deleteVendor = true;
   nativeBuildInputs = [
     gcc
     pkg-config
@@ -24,15 +24,15 @@ buildGo118Module {
     openal
   ];
 
-  modRoot = "src";
+  #modRoot = "src";
 
-  proxyVendor = true;
+  #proxyVendor = true;
 
   buildPhase = ''
     runHook preBuild
-    set +x
+    set -x
     cd $src/src
-    go run ./internal/noxbuild
+    go run ./internal/noxbuild -offline=true -mod=readonly
     runHook postBuild
   '';
 
