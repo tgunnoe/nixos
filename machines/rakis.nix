@@ -98,6 +98,9 @@
         scale = "1.5";
         position = "2880 0";
       };
+      "Optoma Corporation OPTOMA 1080P A7EH9220010" = {
+        resolution = "1920x1080@60hz";
+      };
     };
     input = {
       "1:1:AT_Translated_Set_2_keyboard" = {
