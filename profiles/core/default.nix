@@ -154,7 +154,10 @@ in
     enable = true;
   };
   services.kmscon = {
-    extraConfig = "xkb-variant=dvorak";
+    extraConfig = ''
+      xkb-layout=dvorak
+      xkb-options="ctrl:nocaps"
+    '';
     enable = true;
   };
   services.gpm = {
