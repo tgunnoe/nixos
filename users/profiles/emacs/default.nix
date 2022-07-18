@@ -8,7 +8,7 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsPgtkNativeComp;
+    #package = pkgs.emacsPgtkNativeComp;
     init = {
       enable = true;
       recommendedGcSettings = true;

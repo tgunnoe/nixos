@@ -69,7 +69,7 @@ in
     enable = true;
     wrapperFeatures.gtk = true;
     config = {
-      terminal = "${pkgs.kitty}/bin/kitty";
+      terminal = "${pkgs.termite}/bin/termite";
       assigns = {
         "1: web" = [{ class = "^Firefox$"; }];
         "0: extra" = [{ class = "^Firefox$"; window_role = "About"; }];
@@ -126,7 +126,7 @@ in
         ];
       };
       fonts = {
-        names = [ "DejaVu Sans Mono" "FontAwesome5Free" "Nerdfonts" ];
+        names = [ "DejaVu Sans Mono" "FontAwesome5Free" ];
         style = "Bold Semi-Condensed";
         size = 12.0;
       };

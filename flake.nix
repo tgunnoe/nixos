@@ -104,7 +104,8 @@
 
         nixos = {
           hostDefaults = {
-            system = "x86_64-linux";
+            #system = "x86_64-linux";
+            system = "aarch64-linux";
             channelName = "nixos";
             imports = [ (digga.lib.importExportableModules ./modules) ];
             modules = [
@@ -119,7 +120,7 @@
               ({ pkgs, ... }:
                 let
                   nur-no-pkgs = import nur {
-                    nurpkgs = import nixos { system = "x86_64-linux"; };
+                    nurpkgs = import nixos { system = "aarch64-linux"; };
                   };
                 in
                 {
@@ -135,13 +136,13 @@
             /* set host specific properties here */
             NixOS = { };
             ithaca = {
-              system = "x86_64-linux";
+              system = "aarch64-linux";
               modules = [
                 #mobile-nixos.nixosModules.pine64-pinephone
               ];
             };
             sietch-tabr = {
-              system = "x86_64-linux";
+              system = "aarch64-linux";
               modules = [
               ];
             };
@@ -178,7 +179,7 @@
                 profiles.zsh
               ];
               noemacs = base ++ [ profiles.zsh ];
-              graphics = develop ++ [ kitty sway ];
+              graphics = develop ++ [ termite sway ];
             };
           };
           users = {

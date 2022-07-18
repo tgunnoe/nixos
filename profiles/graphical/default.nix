@@ -49,7 +49,7 @@ in
 
     systemPackages = with pkgs; [
       #discord
-      foxitreader
+      #foxitreader
       firefox-wayland
       glxinfo
       imv

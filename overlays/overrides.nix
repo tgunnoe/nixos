@@ -10,7 +10,7 @@ channels: final: prev: {
     rage
     nixpkgs-fmt
     qutebrowser
-    signal-desktop
+    #signal-desktop
     #starship
     deploy-rs
     ;

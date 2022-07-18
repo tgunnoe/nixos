@@ -98,7 +98,8 @@ in
   };
 
   fonts = {
-    fonts = with pkgs; [ powerline-fonts dejavu_fonts nerdfonts ];
+    fonts = with pkgs; [ powerline-fonts dejavu_fonts # nerdfonts
+                       ];
     fontconfig.defaultFonts = {
       monospace = [ "DejaVu Sans Mono for Powerline" ];
       sansSerif = [ "DejaVu Sans" ];

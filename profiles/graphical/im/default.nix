@@ -1,10 +1,10 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    discord
+    #discord
     element-desktop
-    signal-desktop
-    slack
-    tdesktop
+    #signal-desktop
+    #slack
+    #tdesktop
     gomuks
   ];
 }

@@ -81,7 +81,8 @@
       };
     in
     {
-      fonts = [ nerdfonts ];
+      fonts = [ # nerdfonts
+              ];
       fontconfig.defaultFonts.monospace =
         [ "DejaVu Sans Mono Nerd Font Complete Mono" ];
     };
