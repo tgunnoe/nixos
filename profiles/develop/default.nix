@@ -34,10 +34,11 @@
     git-filter-repo
     gnumake
     gnupg
+    gpgme
 
     go
     gopls
-    gopass
+    #gopass
     go-2fa
 
     less
@@ -97,4 +98,5 @@
   #  programs.sysdig.enable = true;
   security.audit.enable = true;
   security.polkit.enable = true;
+  security.pam.services.swaylock = { };
 }

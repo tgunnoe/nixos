@@ -1,10 +1,12 @@
 {
   description = "Dune universe";
 
-  nixConfig.extra-experimental-features = "nix-command flakes ca-references";
-  nixConfig.extra-substituters = "https://nrdxp.cachix.org https://nix-community.cachix.org";
-  nixConfig.extra-trusted-public-keys = "nrdxp.cachix.org-1:Fc5PSqY2Jm1TrWfm88l6cvGWwz3s93c6IOifQWnhNW4= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
-
+  nixConfig = {
+    extra-experimental-features = "nix-command flakes";
+    extra-substituters = "https://nrdxp.cachix.org https://nix-community.cachix.org https://hydra.iohk.io";
+    extra-trusted-public-keys = "nrdxp.cachix.org-1:Fc5PSqY2Jm1TrWfm88l6cvGWwz3s93c6IOifQWnhNW4= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=";
+    trusted-substituters = "http://hydra.nixos.org";
+  };
   inputs =
     {
       nixos.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -112,7 +114,7 @@
               digga.nixosModules.bootstrapIso
               digga.nixosModules.nixConfig
               home.nixosModules.home-manager
-              extra-container.nixosModule
+              # extra-container.nixosModule
               agenix.nixosModules.age
               #bud.nixosModules.bud
               #repos.emmanuelrosa.modules.protonvpn

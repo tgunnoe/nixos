@@ -284,15 +284,15 @@ in
         { command = "${config.wayland.windowManager.sway.config.terminal} --title='dropdown'"; }
         { command = "${dbus-sway-environment}"; }
         { command = "${configure-gtk}"; }
-        {
-          command = ''
-            ${pkgs.swayidle}/bin/swayidle -w \
-              timeout 300 "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}" \
-              timeout 600 'swaymsg "output * dpms off"' \
-              after-resume 'swaymsg "output * dpms on"' \
-              before-sleep "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}"
-          '';
-        }
+        # {
+        #   command = ''
+        #     ${pkgs.swayidle}/bin/swayidle -w \
+        #       timeout 300 "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}" \
+        #       timeout 600 'swaymsg "output * dpms off"' \
+        #       after-resume 'swaymsg "output * dpms on"' \
+        #       before-sleep "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}"
+        #   '';
+        # }
       ];
     };
     extraSessionCommands = ''
@@ -324,5 +324,34 @@ in
     latitude = 38.0;
     longitude = -80.0;
     enable = true;
+  };
+  services.swayidle = {
+    enable = true;
+    events = [
+      { event = "before-sleep"; command = "swaylock"; }
+      { event = "after-resume"; command = "swaymsg 'output * dpms on'"; }
+    ];
+    timeouts = [
+      { timeout = 300; command = "swaylock -fF"; }
+      { timeout = 600; command = "swaymsg 'output * dpms off'"; }
+    ];
+  };
+  programs.swaylock.settings = {
+    screenshots = true;
+    clock = true;
+    indicator = true;
+    ignore-empty-password = true;
+    indicator-radius = 200;
+    indicator-thickness = 15;
+    effect-pixelate = 5;
+    effect-greyscale = true;
+    effect-vignette = "0.5:0.5";
+    ring-color = "bb00cc";
+    key-hl-color = "880033";
+    line-color = "00000000";
+    inside-color = "00000088";
+    separator-color = "00000000";
+    grace = 10;
+    fade-in = 0.2;
   };
 }
