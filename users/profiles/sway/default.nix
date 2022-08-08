@@ -134,7 +134,7 @@ in
         smartBorders = "on";
       };
       input = {
-        "6127:24814:Lenovo_TrackPoint_Keyboard_II" = {
+        "6127:24801:TrackPoint_Keyboard_II_Keyboard" = {
           xkb_layout = "dvorak";
           xkb_variant = ",nodeadkeys";
           xkb_options = "ctrl:nocaps";
@@ -145,7 +145,7 @@ in
           scroll_method = "on_button_down";
           scroll_button = "disable";
         };
-        "input 6127:24814:Lenovo_TrackPoint_Keyboard_II_Mouse" = {
+        "input 6127:24801:Lenovo_TrackPoint_Keyboard_II_Mouse" = {
           middle_emulation = "disabled";
           tap = "enabled";
           click_method = "none";
