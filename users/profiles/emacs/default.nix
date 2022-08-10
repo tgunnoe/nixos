@@ -161,6 +161,16 @@
         (delete-selection-mode t)
 
 
+        (setq modus-themes-mode-line '(borderless))
+
+        (setq modus-themes-vivendi-color-overrides
+          '((bg-main . nil)
+            (bg-dim . nil)
+            (bg-alt . nil)
+            (bg-active . nil)
+            (bg-inactive . nil)))
+
+        (load-theme 'modus-vivendi t)
         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
         ;; Enable terminal emacs to copy and paste from system clipboard
         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -319,6 +329,9 @@
           config = ''
             (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
           '';
+        };
+        modus-themes = {
+          enable = true;
         };
         # doom-themes = {
         #   enable = true;
