@@ -1171,7 +1171,8 @@
                 "~/org/inbox.org"
                 "~/org/gtd.org"
                 "~/org/tickler.org"
-                "~/src/org/todo.org")
+                "~/org/iohk/*.org")
+
                   org-deadline-warning-days 14
                   org-agenda-show-all-dates t
                   org-agenda-skip-deadline-if-done t
