@@ -16,16 +16,16 @@
       device = "/dev/disk/by-uuid/2EB0-BB29";
       fsType = "vfat";
     };
- # fileSystems."/data" =
- #   {
- #     device = "/dev/disk/by-uuid/0a782a06-91e8-40ae-88fa-6ebe18b7ea74";
- #     fsType = "ext4";
- #   };
+  # fileSystems."/data" =
+  #   {
+  #     device = "/dev/disk/by-uuid/0a782a06-91e8-40ae-88fa-6ebe18b7ea74";
+  #     fsType = "ext4";
+  #   };
   fileSystems."/tmp" =
     {
       device = "tmpfs";
       fsType = "tmpfs";
-      options = [ "nosuid" "nodev" "relatime" "size=32G"];
+      options = [ "nosuid" "nodev" "relatime" "size=32G" ];
     };
 
 
