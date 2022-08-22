@@ -83,7 +83,7 @@
               nvfetcher.overlay
               deploy.overlay
               emacs.overlay
-              nixpkgs-wayland.overlay
+              #nixpkgs-wayland.overlay
               ./pkgs/default.nix
             ];
           };
