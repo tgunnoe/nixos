@@ -14,202 +14,352 @@
       recommendedGcSettings = true;
 
       prelude = ''
-        ;; Disable startup message.
-        (setq inhibit-startup-screen t
-              inhibit-startup-echo-area-message (user-login-name))
+                ;; Disable startup message.
+                (setq inhibit-startup-screen t
+                      inhibit-startup-echo-area-message (user-login-name))
 
-        (setq initial-major-mode 'fundamental-mode
-              initial-scratch-message nil)
+                (setq initial-major-mode 'fundamental-mode
+                      initial-scratch-message nil)
 
-        ;; Disable some GUI distractions.
-        (tool-bar-mode -1)
-        (scroll-bar-mode -1)
-        (menu-bar-mode -1)
-        (blink-cursor-mode 0)
+                ;; Disable some GUI distractions.
+                (tool-bar-mode -1)
+                (scroll-bar-mode -1)
+                (menu-bar-mode -1)
+                (blink-cursor-mode 0)
 
-        ;; Set up fonts early.
-        (set-face-attribute 'default
-                            nil
-                            :height 80
-                            :family "Fantasque Sans Mono")
-        (set-face-attribute 'variable-pitch
-                            nil
-                            :family "DejaVu Sans")
+                ;; Set up fonts early.
+                (set-face-attribute 'default
+                                    nil
+                                    :height 80
+                                    :family "Fantasque Sans Mono")
+                (set-face-attribute 'variable-pitch
+                                    nil
+                                    :family "DejaVu Sans")
 
-        ;; Set frame title.
-        (setq frame-title-format
-              '("" invocation-name ": "(:eval
-                                        (if (buffer-file-name)
-                                            (abbreviate-file-name (buffer-file-name))
-                                          "%b"))))
-        ;; transparency
-        (set-frame-parameter (selected-frame) 'alpha '(90 . 80))
-        (add-to-list 'default-frame-alist '(alpha . (90 . 80)))
+                ;; Set frame title.
+                (setq frame-title-format
+                      '("" invocation-name ": "(:eval
+                                                (if (buffer-file-name)
+                                                    (abbreviate-file-name (buffer-file-name))
+                                                  "%b"))))
+                ;; transparency
+                (set-frame-parameter (selected-frame) 'alpha '(90 . 80))
+                (add-to-list 'default-frame-alist '(alpha . (90 . 80)))
 
-        ;; Accept 'y' and 'n' rather than 'yes' and 'no'.
-        (defalias 'yes-or-no-p 'y-or-n-p)
+                ;; Accept 'y' and 'n' rather than 'yes' and 'no'.
+                (defalias 'yes-or-no-p 'y-or-n-p)
 
-        ;; Don't want to move based on visual line.
-        (setq line-move-visual nil)
+                ;; Don't want to move based on visual line.
+                (setq line-move-visual nil)
 
-        ;; Stop creating backup and autosave files.
-        (setq make-backup-files nil
-              auto-save-default nil)
+                ;; Stop creating backup and autosave files.
+                (setq make-backup-files nil
+                      auto-save-default nil)
 
-        ;; Always show line and column number in the mode line.
-        (line-number-mode)
-        (column-number-mode)
-        (global-display-line-numbers-mode 1)
+                ;; Always show line and column number in the mode line.
+                (line-number-mode)
+                (column-number-mode)
+                (global-display-line-numbers-mode 1)
 
-        ;; Enable some features that are disabled by default.
-        (put 'narrow-to-region 'disabled nil)
+                ;; Enable some features that are disabled by default.
+                (put 'narrow-to-region 'disabled nil)
 
-        ;; Typically, I only want spaces when pressing the TAB key. I also
-        ;; want 4 of them.
-        (setq-default indent-tabs-mode nil
-                      tab-width 4
-                      c-basic-offset 4)
+                ;; Typically, I only want spaces when pressing the TAB key. I also
+                ;; want 4 of them.
+                (setq-default indent-tabs-mode nil
+                              tab-width 4
+                              c-basic-offset 4)
 
-        ;; Trailing white space are banned!
-        (setq-default show-trailing-whitespace t)
+                ;; Trailing white space are banned!
+                (setq-default show-trailing-whitespace t)
 
-        ;; Make a reasonable attempt at using one space sentence separation.
-        (setq sentence-end "[.?!][]\"')}]*\\($\\|[ \t]\\)[ \t\n]*"
-              sentence-end-double-space nil)
+                ;; Make a reasonable attempt at using one space sentence separation.
+                (setq sentence-end "[.?!][]\"')}]*\\($\\|[ \t]\\)[ \t\n]*"
+                      sentence-end-double-space nil)
 
-        ;; I typically want to use UTF-8.
-        (prefer-coding-system 'utf-8)
+                ;; I typically want to use UTF-8.
+                (prefer-coding-system 'utf-8)
 
-        ;; Nicer handling of regions.
-        (transient-mark-mode 1)
+                ;; Nicer handling of regions.
+                (transient-mark-mode 1)
 
-        ;; Make moving cursor past bottom only scroll a single line rather
-        ;; than half a page.
-        (setq scroll-step 1
-              scroll-conservatively 5)
+                ;; Make moving cursor past bottom only scroll a single line rather
+                ;; than half a page.
+                (setq scroll-step 1
+                      scroll-conservatively 5)
 
-        ;; Enable highlighting of current line.
-        (global-hl-line-mode 1)
+                ;; Enable highlighting of current line.
+                (global-hl-line-mode 1)
 
-        ;; Improved handling of clipboard in GNU/Linux and otherwise.
-        (setq select-enable-clipboard t
-              select-enable-primary t
-              save-interprogram-paste-before-kill t)
+                ;; Improved handling of clipboard in GNU/Linux and otherwise.
+                (setq select-enable-clipboard t
+                      select-enable-primary t
+                      save-interprogram-paste-before-kill t)
 
-        ;; Pasting with middle click should insert at point, not where the
-        ;; click happened.
-        (setq mouse-yank-at-point t)
+                ;; Pasting with middle click should insert at point, not where the
+                ;; click happened.
+                (setq mouse-yank-at-point t)
 
-        ;; Turn on mouse
-        (xterm-mouse-mode t)
+                ;; Turn on mouse
+                (xterm-mouse-mode t)
 
-        ;; Enable a few useful commands that are initially disabled.
-        (put 'upcase-region 'disabled nil)
-        (put 'downcase-region 'disabled nil)
+                ;; Enable a few useful commands that are initially disabled.
+                (put 'upcase-region 'disabled nil)
+                (put 'downcase-region 'disabled nil)
 
-        ;; (setq custom-file (locate-user-emacs-file "custom.el"))
-        ;; (load custom-file)
+                ;; (setq custom-file (locate-user-emacs-file "custom.el"))
+                ;; (load custom-file)
 
-        ;; When finding file in non-existing directory, offer to create the
-        ;; parent directory.
-        (defun with-buffer-name-prompt-and-make-subdirs ()
-          (let ((parent-directory (file-name-directory buffer-file-name)))
-            (when (and (not (file-exists-p parent-directory))
-              (y-or-n-p (format "Directory `%s' does not exist! Create it? " parent-directory)))
-              (make-directory parent-directory t))))
+                ;; When finding file in non-existing directory, offer to create the
+                ;; parent directory.
+                (defun with-buffer-name-prompt-and-make-subdirs ()
+                  (let ((parent-directory (file-name-directory buffer-file-name)))
+                    (when (and (not (file-exists-p parent-directory))
+                      (y-or-n-p (format "Directory `%s' does not exist! Create it? " parent-directory)))
+                      (make-directory parent-directory t))))
 
-        (add-to-list 'find-file-not-found-functions #'with-buffer-name-prompt-and-make-subdirs)
+                (add-to-list 'find-file-not-found-functions #'with-buffer-name-prompt-and-make-subdirs)
 
-        ;; Don't want to complete .hi files.
-        (add-to-list 'completion-ignored-extensions ".hi")
+                ;; Don't want to complete .hi files.
+                (add-to-list 'completion-ignored-extensions ".hi")
 
-        (defun rah-disable-trailing-whitespace-mode ()
-          (setq show-trailing-whitespace nil))
+                (defun rah-disable-trailing-whitespace-mode ()
+                  (setq show-trailing-whitespace nil))
 
-        ;; Shouldn't highlight trailing spaces in terminal mode.
-        (add-hook 'term-mode #'rah-disable-trailing-whitespace-mode)
-        (add-hook 'term-mode-hook #'rah-disable-trailing-whitespace-mode)
+                ;; Shouldn't highlight trailing spaces in terminal mode.
+                (add-hook 'term-mode #'rah-disable-trailing-whitespace-mode)
+                (add-hook 'term-mode-hook #'rah-disable-trailing-whitespace-mode)
 
-        ;; Remove trailing white space upon saving
-        ;; Note: because of a bug in EIN we only delete trailing whitespace
-        ;; when not in EIN mode.
-        (add-hook 'before-save-hook
-                  (lambda ()
-                    (when (not (derived-mode-p 'ein:notebook-multilang-mode))
-                  (delete-trailing-whitespace))))
+                ;; Remove trailing white space upon saving
+                ;; Note: because of a bug in EIN we only delete trailing whitespace
+                ;; when not in EIN mode.
+                (add-hook 'before-save-hook
+                          (lambda ()
+                            (when (not (derived-mode-p 'ein:notebook-multilang-mode))
+                          (delete-trailing-whitespace))))
 
-        ;; Check (on save) whether the file edited contains a shebang, if yes,
-        ;; make it executable from
-        ;; http://mbork.pl/2015-01-10_A_few_random_Emacs_tips
-        (add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
-
-
-        ;; Auto-wrap at 80 characters
-        (setq-default auto-fill-function 'do-auto-fill)
-        (setq-default fill-column 80)
-        (turn-on-auto-fill)
-
-        ;; Disable auto-fill-mode in programming mode
-        (add-hook 'prog-mode-hook (lambda () (auto-fill-mode -1)))
-
-        ;; Non-nil means draw block cursor as wide as the glyph under it.
-        ;; For example, if a block cursor is over a tab, it will be drawn as
-        ;; wide as that tab on the display.
-        (setq x-stretch-cursor t)
-
-        ;; Overwrite region selected
-        (delete-selection-mode t)
+                ;; Check (on save) whether the file edited contains a shebang, if yes,
+                ;; make it executable from
+                ;; http://mbork.pl/2015-01-10_A_few_random_Emacs_tips
+                (add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
 
 
-        (setq modus-themes-mode-line '(borderless))
+                ;; Auto-wrap at 80 characters
+                (setq-default auto-fill-function 'do-auto-fill)
+                (setq-default fill-column 80)
+                (turn-on-auto-fill)
 
-        (setq modus-themes-vivendi-color-overrides
-          '((bg-main . nil)
-            (bg-dim . nil)
-            (bg-alt . nil)
-            (bg-active . nil)
-            (bg-inactive . nil)))
+                ;; Disable auto-fill-mode in programming mode
+                (add-hook 'prog-mode-hook (lambda () (auto-fill-mode -1)))
 
-        (load-theme 'modus-vivendi t)
-        ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-        ;; Enable terminal emacs to copy and paste from system clipboard
-        ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-        ;; Note: this uses C-c before the usual C-w, M-w, and C-y
-        ;; From: https://stackoverflow.com/questions/64360/how-to-copy-text-from-emacs-to-another-application-on-linux
-        ;; FIXME, COPY and CUT need extra work
-        (defun my-copy-to-xclipboard(arg)
-          (interactive "P")
-          (cond
-            ((not (use-region-p))
-            (message "Nothing to yank to X-clipboard"))
-            ((and (not (display-graphic-p))
-              (/= 0 (shell-command-on-region
-                        (region-beginning) (region-end) "wl-copy")))
-            (message "Error: Is program `xsel' installed?"))
-            (t
-            (when (display-graphic-p)
-              (call-interactively 'clipboard-kill-ring-save))
-            (message "Yanked region to X-clipboard")
-            (when arg
-              (kill-region  (region-beginning) (region-end)))
-            (deactivate-mark))))
+                ;; Non-nil means draw block cursor as wide as the glyph under it.
+                ;; For example, if a block cursor is over a tab, it will be drawn as
+                ;; wide as that tab on the display.
+                (setq x-stretch-cursor t)
 
-        (defun my-cut-to-xclipboard()
-          (interactive)
-          (my-copy-to-xclipboard t))
+                ;; Overwrite region selected
+                (delete-selection-mode t)
 
-        (defun my-paste-from-xclipboard()
-          (interactive)
-          (if (display-graphic-p)
-              (clipboard-yank)
-            (insert (shell-command-to-string "wl-paste"))))
 
-        (global-set-key [(control shift x)] 'my-cut-to-xclipboard)
-        (global-set-key [(control shift c)] 'my-copy-to-xclipboard)
-        (global-set-key [(control shift v)] 'my-paste-from-xclipboard)
+                (setq modus-themes-mode-line '(borderless))
 
-        ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
-        (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+                (setq modus-themes-vivendi-color-overrides
+                  '((bg-main . nil)
+                    (bg-dim . nil)
+                    (bg-alt . nil)
+                    (bg-active . nil)
+                    (bg-inactive . nil)))
+
+                (load-theme 'modus-vivendi t)
+
+
+                ;; Eshell?
+
+        ;;; Use TRAMP to use Eshell as root.
+        (require 'em-tramp)
+        (setq password-cache t)
+        (setq password-cache-expiry 3600)
+
+        (require 'eshell)
+        (require 'em-smart)
+        (setq eshell-where-to-jump 'begin)
+        (setq eshell-review-quick-commands nil)
+        (setq eshell-smart-space-goes-to-end t)
+
+        ;; If the above does not work, try uncommenting this.
+        (add-to-list 'eshell-modules-list 'eshell-smart)
+        (add-to-list 'eshell-modules-list 'eshell-tramp)
+
+        (with-eval-after-load 'esh-module
+          ;; REVIEW: It used to work, but now the early `provide' seems to backfire.
+          (unless (boundp 'eshell-modules-list)
+            (load "esh-module"))
+          ;; Don't print the banner.
+          (delq 'eshell-banner eshell-modules-list)
+          (push 'eshell-tramp eshell-modules-list))
+
+        (setq
+          eshell-ls-use-colors t
+          ;; ffap-shell-prompt-regexp changes the behaviour of `helm-find-files' when
+          ;; point is on prompt. I find this disturbing.
+          ffap-shell-prompt-regexp nil
+          eshell-history-size 262144
+          eshell-hist-ignoredups t
+          eshell-destroy-buffer-when-process-dies t)
+
+                (defun with-face (str &rest face-plist)
+                  (propertize str 'face face-plist))
+                  (defun custom-eshell-prompt ()
+          (let* (
+                ;; Get the git branch.
+                (git-branch-unparsed
+                  (shell-command-to-string "git rev-parse --abbrev-ref HEAD 2>/dev/null"))
+                  (git-branch
+                  (if (string= git-branch-unparsed "")
+                      ""
+                    ;; Remove the trailing newline.
+                    (substring git-branch-unparsed 0 -1)))
+          )
+            (concat
+              ;; Timestamp.
+              (with-face
+              (format-time-string "[%a, %b %d | %H:%M:%S]\n" (current-time))
+              :inherit font-lock-builtin-face)
+              ;; Directory.
+              (with-face (concat (eshell/pwd) " ") :inherit font-lock-constant-face)
+              ;; Git branch.
+              (unless (string= git-branch "")
+                (with-face (concat "[" git-branch "]") :inherit font-lock-string-face))
+              "\n"
+              ;; Prompt.
+              ;; NOTE: Need to keep " $" for the next/previous prompt regexp to work.
+              (with-face " $" :inherit font-lock-preprocessor-face)
+
+            )))
+        (setq eshell-prompt-function 'custom-eshell-prompt)
+        (setq eshell-highlight-prompt nil)
+
+        (defun ambrevar/eshell-prompt ()
+          (let ((path (abbreviate-file-name (eshell/pwd))))
+            (concat
+              (when ambrevar/eshell-status-p
+                (propertize (or (ambrevar/eshell-status-display) "") 'face font-lock-comment-face))
+              (format
+              (propertize "(%s@%s)" 'face '(:weight bold))
+              (propertize (user-login-name) 'face '(:foreground "cyan"))
+              (propertize (system-name) 'face '(:foreground "cyan")))
+              (if (and (require 'magit nil t) (or (magit-get-current-branch) (magit-get-current-tag)))
+                  (let* ((prefix (abbreviate-file-name (magit-rev-parse "--show-prefix")))
+                        (before-prefix (substring-no-properties path nil (when (/= 0 (length prefix)) (- (length prefix))))))
+                    (format
+                    (propertize "[%s/%s@%s]" 'face '(:weight bold))
+                    (propertize before-prefix 'face `(:foreground ,(if (= (user-uid) 0) "red" "green") :weight bold))
+                    (propertize prefix 'face `(:foreground ,(if (= (user-uid) 0) "orange" "gold")))
+                    (or (magit-get-current-branch) (magit-get-current-tag))))
+                (format
+                (propertize "[%s]" 'face '(:weight bold))
+                (propertize path 'face `(:foreground ,(if (= (user-uid) 0) "red" "green") :weight bold))))
+              (propertize "\nλ$" 'face '(:weight bold))
+              " ")))
+
+        ;;; Leave `eshell-highlight-prompt' to t as it sets the read-only property.
+        (setq eshell-prompt-function #'ambrevar/eshell-prompt)
+        ;;; If the prompt spans over multiple lines, the regexp should match
+        ;;; last line only.
+        (setq-default eshell-prompt-regexp "^λ$ ")
+
+        (with-eval-after-load 'em-term
+          (dolist (p '("abook" "alsamixer" "cmus" "fzf" "gtypist" "htop" "mpsyt" "mpv" "mutt" "ncdu" "newsbeuter" "pinentry-curses" "nmtui" "ssh" "watch" "wifi-menu"))
+            (add-to-list 'eshell-visual-commands p))
+          (setq eshell-visual-subcommands
+                ;; Some Git commands use a pager by default.
+                ;; Either invoke the subcommands in a term ("visual") or configure Git
+                ;; to disable the pager globally.
+                ;; '(("git" "log" "diff" "show")
+                '(("sudo" "wifi-menu") ; Arch Linux
+                  ("sudo" "vi" "visudo"))))
+
+        ;;; Shared history.
+        (defvar ambrevar/eshell-history-global-ring nil
+          "The history ring shared across Eshell sessions.")
+
+        (defun ambrevar/eshell-hist-use-global-history ()
+          "Make Eshell history shared across different sessions."
+          (unless ambrevar/eshell-history-global-ring
+            (when eshell-history-file-name
+              (eshell-read-history nil t))
+            (setq ambrevar/eshell-history-global-ring (or eshell-history-ring (make-ring eshell-history-size))))
+          (setq eshell-history-ring ambrevar/eshell-history-global-ring))
+        (add-hook 'eshell-mode-hook 'ambrevar/eshell-hist-use-global-history)
+
+        ;;; Extra execution information
+        (defvar ambrevar/eshell-status-p t
+          "If non-nil, display status before prompt.")
+        (defvar ambrevar/eshell-status--last-command-time nil)
+        (make-variable-buffer-local 'ambrevar/eshell-status--last-command-time)
+        (defvar ambrevar/eshell-status-min-duration-before-display 1
+          "If a command takes more time than this, display its duration.")
+
+        (defun ambrevar/eshell-status-display ()
+          (when ambrevar/eshell-status--last-command-time
+            (let ((duration (time-subtract (current-time) ambrevar/eshell-status--last-command-time)))
+              (setq ambrevar/eshell-status--last-command-time nil)
+              (when (> (time-to-seconds duration) ambrevar/eshell-status-min-duration-before-display)
+                (format "#[STATUS] End time %s, duration: %s\n"
+                        (format-time-string "%F %T" (current-time))
+                        (modi/seconds-to-human-time (time-to-seconds duration)))))))
+                ;; (format "#[STATUS] End time %s, duration %.3fs\n"
+                ;;         (format-time-string "%F %T" (current-time))
+                ;;         (time-to-seconds duration))))))
+
+
+        (defun ambrevar/eshell-status-record ()
+          (setq ambrevar/eshell-status--last-command-time (current-time)))
+
+        (add-hook 'eshell-pre-command-hook 'ambrevar/eshell-status-record)
+
+        ;; Eshell direnv
+
+
+                ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                ;; Enable terminal emacs to copy and paste from system clipboard
+                ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                ;; Note: this uses C-c before the usual C-w, M-w, and C-y
+                ;; From: https://stackoverflow.com/questions/64360/how-to-copy-text-from-emacs-to-another-application-on-linux
+                ;; FIXME, COPY and CUT need extra work
+                (defun my-copy-to-xclipboard(arg)
+                  (interactive "P")
+                  (cond
+                    ((not (use-region-p))
+                    (message "Nothing to yank to X-clipboard"))
+                    ((and (not (display-graphic-p))
+                      (/= 0 (shell-command-on-region
+                                (region-beginning) (region-end) "wl-copy")))
+                    (message "Error: Is program `xsel' installed?"))
+                    (t
+                    (when (display-graphic-p)
+                      (call-interactively 'clipboard-kill-ring-save))
+                    (message "Yanked region to X-clipboard")
+                    (when arg
+                      (kill-region  (region-beginning) (region-end)))
+                    (deactivate-mark))))
+
+                (defun my-cut-to-xclipboard()
+                  (interactive)
+                  (my-copy-to-xclipboard t))
+
+                (defun my-paste-from-xclipboard()
+                  (interactive)
+                  (if (display-graphic-p)
+                      (clipboard-yank)
+                    (insert (shell-command-to-string "wl-paste"))))
+
+                (global-set-key [(control shift x)] 'my-cut-to-xclipboard)
+                (global-set-key [(control shift c)] 'my-copy-to-xclipboard)
+                (global-set-key [(control shift v)] 'my-paste-from-xclipboard)
+
+                ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
+                (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
       '';
 
@@ -300,7 +450,33 @@
             ''
           ];
         };
-
+        dash = {
+          enable = true;
+        };
+        equake = {
+          enable = true;
+          config = ''
+            :custom
+            (equake-size-width 0.99)
+            ;; set distinct face for Equake: white foreground with dark blue background, and different font:
+            :custom-face
+            (equake-buffer-face
+              ((t (:inherit 'default :family "DejaVu Sans Mono" :background "#000022" :foreground "white"))))
+            :config
+            ;; prevent accidental frame closure:
+            (advice-add #'save-buffers-kill-terminal :before-while #'equake-kill-emacs-advice)
+            ;; binding to restore last Equake tab when viewing a non-Equake buffer
+            (global-set-key (kbd "C-M-^") #'equake-restore-last-etab)
+            ;; set default shell
+            (setq equake-default-shell 'vterm)
+            ;; set list of available shells
+            (setq equake-available-shells
+              '("shell"
+                "vterm"
+                "rash"
+                "eshell"))
+          '';
+        };
         deadgrep = {
           enable = true;
           bind = {
@@ -311,6 +487,9 @@
         direnv = {
           enable = true;
           command = [ "direnv-mode" "direnv-update-environment" ];
+          hook = [
+            "(add-hook 'eshell-directory-change-hook #'direnv-update-directory-environment)"
+          ];
         };
 
         dhall-mode = {
@@ -390,10 +569,33 @@
           enable = true;
           mode = [ ''"\\.elm\\'"'' ];
         };
+        envrc = {
+          enable = true;
+          config = ''
+            (envrc-global-mode)
+          '';
+        };
         epresent = {
           enable = true;
         };
-
+        # Eshell
+        esh-autosuggest = {
+          enable = true;
+          hook = [
+            "(add-hook 'eshell-mode-hook 'esh-autosuggest-mode)"
+          ];
+          config = ''
+            (setq esh-autosuggest-delay 0.75)
+              (define-key esh-autosuggest-active-map (kbd "<tab>") 'company-complete-selection)
+          '';
+        };
+        eshell-info-banner = {
+          enable = true;
+          defer = true;
+          hook = [
+            "(eshell-banner-load . eshell-info-banner-update-banner)"
+          ];
+        };
         etags = {
           enable = true;
           defer = true;
@@ -1082,7 +1284,6 @@
             ;; FIXME, setup rah-org replacement
             (setq org-tag-alist '((:startgroup . nil)
                         ("@tgunnoe" . ?j)
-                        ("@armor" . ?a)
                         (:endgroup . nil)
                         (:startgroup . nil)
                         ("!v0" . ?0) ("!v1" . ?1)
@@ -1171,7 +1372,7 @@
                 "~/org/inbox.org"
                 "~/org/gtd.org"
                 "~/org/tickler.org"
-                "~/org/iohk/*.org")
+                "~/org/iohk/tasks.org")
 
                   org-deadline-warning-days 14
                   org-agenda-show-all-dates t
