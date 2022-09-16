@@ -157,7 +157,7 @@ in
           scroll_method = "on_button_down";
           scroll_button = "disable";
         };
-        "6127:24814:Lenovo_TrackPoint_Keyboard_II" {
+        "6127:24814:Lenovo_TrackPoint_Keyboard_II" = {
           xkb_layout = "dvorak";
           xkb_variant = ",nodeadkeys";
           xkb_options = "ctrl:nocaps";
