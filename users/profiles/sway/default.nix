@@ -68,6 +68,18 @@ in
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
+    # package = pkgs.sway.overrideDerivation (oldAttrs: {
+    #   name = "sway-1.7-pr6484";
+    #   patches = oldAttrs.patches ++ [
+    #     (
+    #       pkgs.fetchpatch {
+    #         name = "fix-segfault.patch";
+    #         url = "https://github.com/swaywm/sway/pull/6484.patch";
+    #         sha256 = "iUl8pBpj+vE6gq+WZJTD96/jGU0qNdDZD4WndYZtDUg=";
+    #       }
+    #     )
+    #   ];
+    # });
     config = {
       terminal = "${pkgs.kitty}/bin/kitty";
       assigns = {
@@ -135,6 +147,17 @@ in
       };
       input = {
         "6127:24801:TrackPoint_Keyboard_II" = {
+          xkb_layout = "dvorak";
+          xkb_variant = ",nodeadkeys";
+          xkb_options = "ctrl:nocaps";
+          middle_emulation = "enabled";
+          tap = "enabled";
+          click_method = "none";
+          drag_lock = "disabled";
+          scroll_method = "on_button_down";
+          scroll_button = "disable";
+        };
+        "6127:24814:Lenovo_TrackPoint_Keyboard_II" {
           xkb_layout = "dvorak";
           xkb_variant = ",nodeadkeys";
           xkb_options = "ctrl:nocaps";

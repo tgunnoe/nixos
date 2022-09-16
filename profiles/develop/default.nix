@@ -18,6 +18,7 @@
 
   environment.systemPackages = with pkgs; [
     appimage-run
+    cntr
     adoptopenjdk-icedtea-web
     deploy-rs.deploy-rs
     #libbitcoin-explorer
@@ -91,7 +92,7 @@
   ];
   documentation.dev.enable = true;
 
-  programs.thefuck.enable = true;
+  #programs.thefuck.enable = true;
   programs.firejail.enable = true;
   programs.mtr.enable = true;
   programs.extra-container.enable = true;

@@ -5,9 +5,10 @@
     (import "${inputs.mobile-nixos}/lib/configuration.nix" {
       device = "pine64-pinephone";
     })
-  ] ++ suites.user;
+  ] # ++ suites.user
+  ;
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ inputs.self.overlay ];
+  #nixpkgs.overlays = [ inputs.self.overlays ];
   environment.systemPackages = [
     pkgs.chatty
     pkgs.megapixels

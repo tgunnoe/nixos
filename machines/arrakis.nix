@@ -1,6 +1,6 @@
 { lib, pkgs, modulesPath, suites, ... }:
 {
-  age.secrets.salusa.file = "${self}/secrets/salusa.age";
+  #age.secrets.salusa.file = "${self}/secrets/salusa.age";
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ] ++ suites.mobile;

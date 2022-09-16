@@ -25,6 +25,7 @@ in
       "video"
       "taskd"
       "docker"
+      "plugdev"
     ];
     openssh = {
       authorizedKeys = {

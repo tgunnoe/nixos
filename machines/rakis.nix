@@ -81,6 +81,7 @@
     keyMap = "dvorak";
     earlySetup = true;
   };
+  users.groups.plugdev = {};
   home-manager.users.tgunnoe.wayland.windowManager.sway.config = {
     gaps = {
       inner = 20;
