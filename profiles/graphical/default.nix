@@ -56,6 +56,7 @@ in
       ffmpeg-full
       imagemagick
       librsvg
+      libreoffice
       libsForQt5.qtstyleplugins
       man-pages
       pulsemixer
