@@ -10,7 +10,7 @@
   };
   inputs =
     {
-      nixos.url = "github:nixos/nixpkgs?rev=1158501e7c7cba26d922723cf9f70099995eb755";
+      nixos.url = "github:nixos/nixpkgs?rev=f677051b8dc0b5e2a9348941c99eea8c4b0ff28f";
       latest.url = "github:nixos/nixpkgs/nixos-unstable";
 
       digga.url = "github:divnix/digga";
@@ -25,7 +25,7 @@
       extra-container.inputs.nixpkgs.follows = "nixos";
       extra-container.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
 
-      emacs.url = "github:nix-community/emacs-overlay/19952866828a8d8a08e0e264ad1842e585eadc23";
+      emacs.url = "github:nix-community/emacs-overlay/8ff1524472abef7c86c9e9c221d8969911074b4a";
       emacs.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
 
       nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
