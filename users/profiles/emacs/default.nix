@@ -1175,7 +1175,13 @@
           mode = [ ''"\\.nix\\'"'' ];
           hook = [ "(nix-mode . subword-mode)" ];
         };
-
+        eglot = {
+          enable = true;
+          config = ''
+            (add-to-list 'eglot-server-programs '(nix-mode . ("nil")))
+          '';
+          hook = [ "(nix-mode . eglot-ensure)" ];
+        };
         # Use ripgrep for fast text search in projects. I usually use
         # this through Projectile.
         ripgrep = {

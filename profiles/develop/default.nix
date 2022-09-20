@@ -50,6 +50,7 @@
     cachix
     nix-serve
     nixpkgs-review
+    nil
 
     nodejs
     yarn
