@@ -156,7 +156,7 @@
             };
             suites = with profiles; rec {
               base = [ core users.tgunnoe users.root ];
-              workstation = [ develop ssh virt base ];
+              workstation = [ develop ssh virt base print ];
               shell = [ core develop ssh virt users.root ];
               graphics = workstation ++ [ graphical ];
               mobile = graphics ++ [ laptop ];

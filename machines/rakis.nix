@@ -81,7 +81,7 @@
     keyMap = "dvorak";
     earlySetup = true;
   };
-  users.groups.plugdev = {};
+  users.groups.plugdev = { };
   home-manager.users.tgunnoe.wayland.windowManager.sway.config = {
     gaps = {
       inner = 20;
@@ -92,7 +92,7 @@
         bg = "${self}/artwork/background.jpg fill";
         resolution = "2256x1504@60hz";
         scale = "1.5";
-        position = "3440 1557";
+        position = "3440 2508";
       };
       "Ancor Communications Inc ASUS MG28U 0x00001BF4" = {
         bg = "${self}/artwork/background.jpg fill";
@@ -108,7 +108,7 @@
       DP-4 = {
         bg = "${self}/artwork/background.jpg fill";
         resolution = "3440x1440@144hz";
-        position = "0 940";
+        position = "1159 1068";
         scale = "1";
       };
 
