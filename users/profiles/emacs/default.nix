@@ -615,6 +615,12 @@
             ''("\\.sol\\'" . solidity-mode)''
           ];
         };
+        elixir-mode = {
+          enable = true;
+          mode = [
+            ''("\\.exs\\'" . elixir-mode)''
+          ];
+        };
         ggtags = {
           enable = true;
           defer = true;
