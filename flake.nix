@@ -7,10 +7,11 @@
     extra-trusted-public-keys = "nrdxp.cachix.org-1:Fc5PSqY2Jm1TrWfm88l6cvGWwz3s93c6IOifQWnhNW4= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=";
     trusted-substituters = "http://hydra.nixos.org";
     allow-import-from-derivation = true;
+    github-access-token = "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";
   };
   inputs =
     {
-      nixos.url = "github:nixos/nixpkgs?rev=f677051b8dc0b5e2a9348941c99eea8c4b0ff28f";
+      nixos.url = "github:nixos/nixpkgs/104e8082de1b20f9d0e1f05b1028795ed0e0e4bc";
       latest.url = "github:nixos/nixpkgs/nixos-unstable";
 
       digga.url = "github:divnix/digga";
@@ -25,7 +26,7 @@
       extra-container.inputs.nixpkgs.follows = "nixos";
       extra-container.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
 
-      emacs.url = "github:nix-community/emacs-overlay/8ff1524472abef7c86c9e9c221d8969911074b4a";
+      emacs.url = "github:nix-community/emacs-overlay/d5dbc29af6033b0c9ea25c5382a15612c527ae96";
       emacs.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
 
       nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";

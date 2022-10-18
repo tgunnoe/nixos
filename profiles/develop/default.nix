@@ -66,6 +66,7 @@
     sqlite
     tig
     tokei
+    tree
     viu
     wget
     youtube-dl
@@ -97,7 +98,7 @@
   programs.firejail.enable = true;
   programs.mtr.enable = true;
   programs.extra-container.enable = true;
-  #  programs.sysdig.enable = true;
+  programs.sysdig.enable = true;
   security.audit.enable = true;
   security.polkit.enable = true;
   security.pam.services.swaylock = { };

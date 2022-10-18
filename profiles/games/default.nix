@@ -3,7 +3,7 @@
   environment.systemPackages = with pkgs; [
     #retroarchBare
     #pcsx2
-    devilutionx
+    #devilutionx
     factorio
     openra
     openal
