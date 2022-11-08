@@ -119,7 +119,6 @@
               # extra-container.nixosModule
               agenix.nixosModules.age
               #bud.nixosModules.bud
-              #repos.emmanuelrosa.modules.protonvpn
               ({ pkgs, ... }:
                 let
                   nur-no-pkgs = import nur {

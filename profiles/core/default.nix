@@ -151,14 +151,17 @@ in
   services.pipewire = {
     alsa.enable = true;
     pulse.enable = true;
+    #wireplumber.enable = true;
+    #media-session.enable = true;
     enable = true;
   };
   services.kmscon = {
     extraConfig = ''
       xkb-layout=dvorak
-      xkb-options="ctrl:nocaps"
+      xkb-options=ctrl:nocaps
     '';
-    enable = true;
+    enable = false;
+    hwRender = true;
   };
   services.gpm = {
     enable = true;

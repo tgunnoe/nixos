@@ -83,7 +83,7 @@ in
   services.tor.enable = true;
   services.tor.client.enable = true;
   services.greetd = {
-    enable = true;
+    enable = false;
     settings = {
       default_session = {
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd sway";
@@ -91,4 +91,7 @@ in
       };
     };
   };
+  # services.xserver.displayManager.gdm = {
+  #   enable = true;
+  # };
 }

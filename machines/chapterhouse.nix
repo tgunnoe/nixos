@@ -16,11 +16,12 @@
       device = "/dev/disk/by-uuid/2EB0-BB29";
       fsType = "vfat";
     };
-  # fileSystems."/data" =
-  #   {
-  #     device = "/dev/disk/by-uuid/0a782a06-91e8-40ae-88fa-6ebe18b7ea74";
-  #     fsType = "ext4";
-  #   };
+ # fileSystems."/data" =
+ #   {
+ #     device = "/dev/disk/by-uuid/154d7e98-af18-495d-9f00-94f8cbff9271";
+ #     fsType = "ext4";
+ #     options = [ "remount" "rw" "uid=1000" "gid=users" ];
+ #   };
   fileSystems."/tmp" =
     {
       device = "tmpfs";
@@ -100,13 +101,13 @@
       outer = 5;
     };
     output = {
-      "Unknown 34CHR 0x00000000" = {
+      "Beihai Century Joint Innovation Technology Co.,Ltd 34CHR Unknown" = {
         bg = "${self}/artwork/background.jpg fill";
         resolution = "3440x1440@144hz";
         position = "5120 0";
         scale = "1";
       };
-      "Unknown 43305 0000000000000" = {
+      "Monoprice.Inc 43305 0000000000000" = {
         bg = "${self}/artwork/background.jpg fill";
         resolution = "5120x1440@120hz";
         position = "0 0";
