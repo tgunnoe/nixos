@@ -362,6 +362,14 @@
                 ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
                 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
+
+        (defun my/org-present-start ()
+          (visual-fill-column-mode 1)
+          (visual-line-mode 1))
+        (defun my/org-present-end ()
+          (visual-fill-column-mode 0)
+          (visual-line-mode 0))
+
       '';
 
       usePackage = {
@@ -1180,7 +1188,27 @@
         nix-mode = {
           enable = true;
           mode = [ ''"\\.nix\\'"'' ];
+          command = [ "org-babel-execute:nix" ];
           hook = [ "(nix-mode . subword-mode)" ];
+          config = ''
+:init/defun*
+        (org-babel-execute:nix (body params)
+            "Execute a block of Nix code with org-babel."
+            (message "executing Nix source code block")
+            (let ((E (cdr (assoc :E params)))
+                (in-file (unless E (org-babel-temp-file "n" ".nix")))
+                (show-trace (cdr (assoc :show-trace params)))
+                (json (cdr (assoc :json params)))
+                (xml (cdr (assoc :xml params))))
+            (unless E (with-temp-file in-file (insert body)))
+            (org-babel-eval
+                (format "nix-instantiate --read-write-mode --eval %s %s %s %s"
+                    (if show-trace "--show-trace" "")
+                    (if json "--json" "")
+                    (if xml "--xml" "")
+                    (if E (format "-E '%s'" body) (org-babel-process-file-name in-file)))
+            "")))
+          '';
         };
         eglot = {
           enable = true;
@@ -1487,7 +1515,20 @@
           enable = true;
           hook = [ "(org-mode . org-bullets-mode)" ];
         };
-
+        org-present = {
+          enable = true;
+          hook = [
+            "('org-present-mode-hook 'my/org-present-start)"
+            "('org-present-mode-quit-hook 'my/org-present-end)"
+          ];
+        };
+        visual-fill-column = {
+          enable = true;
+          config = ''
+            (setq visual-fill-column-center-text t
+                  visual-fill-column-width 110)
+          '';
+        };
         org-tree-slide = {
           enable = true;
           command = [ "org-tree-slide-mode" ];

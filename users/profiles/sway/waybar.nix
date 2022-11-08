@@ -13,6 +13,7 @@
           "eDP-1"
           "HDMI-A-1"
           "DP-2"
+          "DP-1"
           "Monoprice.Inc 43305 0000000000000"
           "DP-4"
         ];

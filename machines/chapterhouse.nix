@@ -101,23 +101,23 @@
       outer = 5;
     };
     output = {
-      "Beihai Century Joint Innovation Technology Co.,Ltd 34CHR Unknown" = {
-        bg = "${self}/artwork/background.jpg fill";
-        resolution = "3440x1440@144hz";
-        position = "5120 0";
-        scale = "1";
-      };
-      "Monoprice.Inc 43305 0000000000000" = {
+      "Unknown 43305 0000000000000" = {
         bg = "${self}/artwork/background.jpg fill";
         resolution = "5120x1440@120hz";
         position = "0 0";
+        scale = "1";
+      };
+      "Unknown 34CHR 0x00000000" = {
+        bg = "${self}/artwork/background.jpg fill";
+        resolution = "3440x1440@144hz";
+        position = "2560 1440";
         scale = "1";
       };
 
       "Ancor Communications Inc ASUS MG28U 0x00001BF4" = {
         bg = "${self}/artwork/background.jpg fill";
         resolution = "3840x2160@60hz";
-        position = "8560 0";
+        position = "0 1440";
         scale = "1.5";
         #transform = "270";
       };
