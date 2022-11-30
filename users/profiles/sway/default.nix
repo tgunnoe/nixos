@@ -298,15 +298,15 @@ in
         { command = "${config.wayland.windowManager.sway.config.terminal} --title='dropdown'"; }
         { command = "${dbus-sway-environment}"; }
         { command = "${configure-gtk}"; }
-        # {
-        #   command = ''
-        #     ${pkgs.swayidle}/bin/swayidle -w \
-        #       timeout 300 "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}" \
-        #       timeout 600 'swaymsg "output * dpms off"' \
-        #       after-resume 'swaymsg "output * dpms on"' \
-        #       before-sleep "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}"
-        #   '';
-        # }
+        {
+          command = ''
+            ${pkgs.swayidle}/bin/swayidle -w \
+              timeout 300 "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}" \
+              timeout 600 'swaymsg "output * dpms off"' \
+              after-resume 'swaymsg "output * dpms on"' \
+              before-sleep "${pkgs.swaylock}/bin/swaylock --config ${./swaylock-config}"
+          '';
+        }
       ];
     };
     extraSessionCommands = ''

@@ -1757,7 +1757,7 @@
           hook = [ "ggtags-mode" ];
         };
         rudel = {
-          enable = true;
+          #enable = true;
         };
         restclient = {
           enable = true;

@@ -95,11 +95,12 @@
   documentation.dev.enable = true;
 
   #programs.thefuck.enable = true;
+  programs.adb.enable = true;
   programs.firejail.enable = true;
   programs.mtr.enable = true;
   programs.extra-container.enable = true;
   programs.sysdig.enable = true;
   security.audit.enable = true;
   security.polkit.enable = true;
-  security.pam.services.swaylock = { };
+  #security.pam.services.swaylock = { enable = true; };
 }

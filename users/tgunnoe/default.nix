@@ -18,6 +18,7 @@ in
     isNormalUser = true;
     group = "tgunnoe";
     extraGroups = [
+      "adbusers"
       "wheel"
       "input"
       "networkmanager"

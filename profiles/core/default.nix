@@ -125,6 +125,7 @@ in
       system-features = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
       auto-optimise-store = true;
       allowed-users = [ "@wheel" ];
+      netrc-file = /etc/nix/netrc;
     };
 
     extraOptions = ''
