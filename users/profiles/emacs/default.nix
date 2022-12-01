@@ -1961,7 +1961,10 @@
             (powerline-right-theme)
           '';
         };
-
+        scala-mode = {
+          enable = true;
+          mode = [ ''"\\.scala\\'"'' ];
+        };
         treemacs-projectile = {
           enable = true;
           after = [ "treemacs" "projectile" ];
