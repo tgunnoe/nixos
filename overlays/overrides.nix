@@ -34,15 +34,15 @@ channels: final: prev: {
     token = "88a2d1512d4e65c2fb1e53a2997ba9";
   };
   # This doesn't apply when using the nixpkgs-overlay..
-  sway = prev.sway.overrideAttrs (old: {
-    patches = prev.sway.patches ++ [
-      (
-        prev.fetchpatch {
-          name = "fix-segfault.patch";
-          url = "https://github.com/swaywm/sway/pull/6484.patch";
-          sha256 = "iUl8pBpj+vE6gq+WZJTD96/jGU0qNdDZD4WndYZtDUg=";
-        }
-      )
-    ];
-  });
+  # sway = prev.sway.overrideAttrs (old: {
+  #   patches = prev.sway.patches ++ [
+  #     (
+  #       prev.fetchpatch {
+  #         name = "fix-segfault.patch";
+  #         url = "https://github.com/swaywm/sway/pull/6484.patch";
+  #         sha256 = "iUl8pBpj+vE6gq+WZJTD96/jGU0qNdDZD4WndYZtDUg=";
+  #       }
+  #     )
+  #   ];
+  # });
 }
