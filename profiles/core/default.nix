@@ -36,6 +36,7 @@ in
       inetutils
       utillinux
       whois
+      xdg-utils
     ];
     pathsToLink = [ "/share/zsh" ];
     shellAliases =
@@ -125,7 +126,7 @@ in
       system-features = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
       auto-optimise-store = true;
       allowed-users = [ "@wheel" ];
-      netrc-file = /etc/nix/netrc;
+      netrc-file = /home/tgunnoe/.netrc;
     };
 
     extraOptions = ''

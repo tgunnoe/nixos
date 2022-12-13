@@ -1,4 +1,4 @@
-{ self, lib, pkgs, modulesPath, suites, ... }:
+{ self, lib, pkgs, modulesPath, suites, config, ... }:
 
 {
   imports = [
@@ -33,6 +33,7 @@
     {
       device = "rpool/encrypted/safe/persist";
       fsType = "zfs";
+      neededForBoot = true;
     };
 
   swapDevices = [ ];
@@ -144,9 +145,10 @@
     hostName = "arrakis";
     firewall.allowedTCPPorts = [ 8000 30000 ];
     firewall.allowedUDPPorts = [ 30000 ];
-    useDHCP = false;
+    #useDHCP = false;
     #    interfaces.wlp170s0.useDHCP = true;
-    networkmanager.enable = true;
+    #networkmanager.enable = true;
+    wireless.iwd.enable = true;
   };
   services.openssh = {
     hostKeys =
@@ -163,10 +165,12 @@
       ];
     openFirewall = true;
   };
+  age.secretsDir = "/persist/agenix";
+  age.secretsMountPoint = "/persist/agenix.d";
 
   hardware.opengl.driSupport32Bit = true;
   hardware.pulseaudio.support32Bit = true;
-  #hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   system.stateVersion = "22.11";
 

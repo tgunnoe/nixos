@@ -12,7 +12,7 @@ in
   users.groups.media.members = [ "tgunnoe" ];
   users.users.tgunnoe = {
     uid = 1000;
-    passwordFile = "/run/agenix/tgunnoe";
+    passwordFile = "/persist/agenix/tgunnoe";
     description = name;
     shell = pkgs.zsh;
     isNormalUser = true;
