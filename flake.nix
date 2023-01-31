@@ -10,7 +10,7 @@
   };
   inputs =
     {
-      nixos.url = "github:nixos/nixpkgs/dfef2e61107dc19c211ead99a5a61374ad8317f4";
+      nixos.url = "github:nixos/nixpkgs/nixos-unstable";
       latest.url = "github:nixos/nixpkgs/nixos-unstable";
 
       digga.url = "github:divnix/digga";
@@ -25,7 +25,7 @@
       extra-container.inputs.nixpkgs.follows = "nixos";
       extra-container.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
 
-      emacs.url = "github:nix-community/emacs-overlay/290e366022a72225fed4f378e525de955c2edce5";
+      emacs.url = "github:nix-community/emacs-overlay";
       emacs.inputs.flake-utils.follows = "digga/flake-utils-plus/flake-utils";
 
       nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -79,8 +79,8 @@
             overlays = [
               #digga.overlays.patchedNix
               nur.overlay
-              agenix.overlay
-              nvfetcher.overlay
+              agenix.overlays.default
+              nvfetcher.overlays.default
               deploy.overlay
               emacs.overlay
               #nixpkgs-wayland.overlay

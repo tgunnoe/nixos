@@ -92,6 +92,8 @@
   services.udev.packages = [
     # pkgs.platformio #
   ];
+  services.tailscale.enable = true;
+  networking.firewall.checkReversePath = "loose";
   documentation.dev.enable = true;
 
   #programs.thefuck.enable = true;

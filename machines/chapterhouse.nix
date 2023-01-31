@@ -148,7 +148,7 @@
   services.openssh.openFirewall = true;
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
-
+  security.sudo.wheelNeedsPassword = false;
   system.stateVersion = "20.03";
 
 }
