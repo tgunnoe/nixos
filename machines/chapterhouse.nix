@@ -16,12 +16,12 @@
       device = "/dev/disk/by-uuid/2EB0-BB29";
       fsType = "vfat";
     };
- # fileSystems."/data" =
- #   {
- #     device = "/dev/disk/by-uuid/154d7e98-af18-495d-9f00-94f8cbff9271";
- #     fsType = "ext4";
- #     options = [ "remount" "rw" "uid=1000" "gid=users" ];
- #   };
+  # fileSystems."/data" =
+  #   {
+  #     device = "/dev/disk/by-uuid/154d7e98-af18-495d-9f00-94f8cbff9271";
+  #     fsType = "ext4";
+  #     options = [ "remount" "rw" "uid=1000" "gid=users" ];
+  #   };
   fileSystems."/tmp" =
     {
       device = "tmpfs";
@@ -34,7 +34,7 @@
     [{ device = "/dev/disk/by-uuid/04983f36-41ad-4dea-9227-6a3f06fbbb11"; }];
 
   # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
+  #hardware.video.hidpi.enable = lib.mkDefault true;
   hardware.bluetooth.enable = true;
 
   boot = {
@@ -75,6 +75,17 @@
         version = 2;
         efiSupport = true;
         enableCryptodisk = true;
+        useOSProber = true;
+        extraEntries = ''
+            menuentry "Windows" {
+              insmod part_gpt
+              insmod fat
+              insmod search_fs_uuid
+              insmod chain
+              search --fs-uuid --set=root 0A783C09783BF255
+              chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+          }
+        '';
       };
     };
     initrd = {
@@ -94,6 +105,7 @@
       };
     };
     supportedFilesystems = [ "ntfs" ];
+    #zfs.enabled = lib.mkForce true;
   };
   home-manager.users.tgunnoe.wayland.windowManager.sway.config = {
     gaps = {
@@ -101,13 +113,13 @@
       outer = 5;
     };
     output = {
-      "Unknown 43305 0000000000000" = {
+      "Monoprice.Inc 43305 0000000000000" = {
         bg = "${self}/artwork/background.jpg fill";
         resolution = "5120x1440@120hz";
         position = "0 0";
         scale = "1";
       };
-      "Unknown 34CHR 0x00000000" = {
+      "Beihai Century Joint Innovation Technology Co.,Ltd 34CHR Unknown" = {
         bg = "${self}/artwork/background.jpg fill";
         resolution = "3440x1440@144hz";
         position = "2560 1440";
@@ -147,6 +159,7 @@
   };
   services.openssh.openFirewall = true;
   time.timeZone = "America/New_York";
+  time.hardwareClockInLocalTime = true;
   i18n.defaultLocale = "en_US.UTF-8";
   security.sudo.wheelNeedsPassword = false;
   system.stateVersion = "20.03";

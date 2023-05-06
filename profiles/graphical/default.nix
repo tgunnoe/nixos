@@ -68,7 +68,7 @@ in
       chromium
       nomacs
       #tor-browser-bundle-bin
-      nyxt
+      #nyxt
       pcmanfm
       mupdf
       # video pkgs

@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     #retroarchBare
     #pcsx2
+    darkplaces
     #devilutionx
     factorio
     openra
@@ -24,7 +25,12 @@
   programs.steam.enable = true;
 
   # fps games on laptop need this
-  #services.xserver.libinput.touchpad.disableWhileTyping = false;
+  services.xserver.libinput.touchpad.disableWhileTyping = false;
+  services.xserver.libinput.mouse.disableWhileTyping = false;
+  services.xserver.libinput.touchpad.tappingDragLock = false;
+  services.xserver.libinput.mouse.tappingDragLock = false;
+  services.xserver.libinput.mouse.tapping = false;
+
 
   services.xserver.windowManager.steam = { enable = true; };
 

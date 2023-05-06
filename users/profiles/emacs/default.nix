@@ -458,6 +458,9 @@
             ''
           ];
         };
+        crdt = {
+          enable = true;
+        };
         dash = {
           enable = true;
         };

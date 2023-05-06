@@ -91,6 +91,8 @@
     };
   services.udev.packages = [
     # pkgs.platformio #
+    pkgs.qmk-udev-rules
+
   ];
   services.tailscale.enable = true;
   networking.firewall.checkReversePath = "loose";
@@ -101,7 +103,7 @@
   programs.firejail.enable = true;
   programs.mtr.enable = true;
   programs.extra-container.enable = true;
-  programs.sysdig.enable = true;
+  #programs.sysdig.enable = true;
   security.audit.enable = true;
   security.polkit.enable = true;
   #security.pam.services.swaylock = { enable = true; };
